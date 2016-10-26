@@ -9,11 +9,11 @@ void setup()
     line(0, i, width, i);
   }
   
-  img=loadImage("Vault_Boy(3).png");
+  Start_Up1=loadImage("Vault_Boy(3).png");
   startup_font = createFont("Monofonto",16,true);
 }
 
-PImage img;
+PImage Start_Up1;
 PFont startup_font;
 
 void draw()
@@ -26,7 +26,7 @@ void StartUp()
    fill(40,255,75);
    ellipse(width/2, height/2, 400, 400);
    
-   image(img, width/2-180, height/2-160, 350,350);
+   image(Start_Up1, width/2-180, height/2-160, 350,350);
    textFont(startup_font, 60);
    text("Starting Up", width/2-150, height/2 + 300);
    noStroke();
