@@ -21,19 +21,26 @@ void setup()
   Perception=loadImage("Perception.png");
   Endurance=loadImage("Endurance.png");
   Charisma=loadImage("Charisma.png");
+  Intelligence=loadImage("Intelligence.png");
+  Agility=loadImage("Agility.png");
+  Luck=loadImage("Luck.png");
   
   Default = Strength;
 }
 
 PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Cripple2;//Images for Menu_Status
-PImage Default, Strength, Perception, Endurance, Charisma;//Images for Special
+PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
 
-PFont startup_font;
-int DefaultPosW = width/2+150;
-int DefaultPosH = height/2-225;
+
+int DefaultPosW;
+int DefaultPosH;
 int DefaultSizeW = 400;
 int DefaultSizeH = 500;
+int rect_i , rect_j;
+
+
+PFont startup_font;
 int counter = 0;
 int i = 0;
 
@@ -219,7 +226,16 @@ void Status()
 
 void Special()
 {
-    background(0,51,20,40);
+  if(counter < 1)
+  {
+    DefaultPosW = width/2+150;
+    DefaultPosH = height/2-225;
+    rect_i = width/2-438;
+    rect_j = height/2-234;
+    counter = 1;  
+  }
+  
+  background(0,51,20,40);
   for(int i=0; i < height; i+=10)
   {
     stroke(0,50);
@@ -287,7 +303,7 @@ void Special()
    text("3", 600, 575);
    text("3", 600, 650);
    noFill();
-   rect(245,150,400,60);
+   
    
    if( (mouseX > 245 && mouseX < 645) && (mouseY > 150 && mouseY < 210) )
    {
@@ -297,6 +313,9 @@ void Special()
      DefaultPosH  = height/2-225;
      DefaultSizeW = 400;
      DefaultSizeH = 500;
+     rect_i = width/2-438;
+     rect_j = height/2-234;
+     rect(rect_i, rect_j,400,60);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 215 && mouseY < 275) )
    {
@@ -305,9 +324,12 @@ void Special()
      DefaultPosW =  width/2+150;
      DefaultPosH  = height/2-225;
      DefaultSizeW = 400;
-     DefaultSizeH = 500;     
+     DefaultSizeH = 500;
+     rect_i = width/2-438;
+     rect_j = height/2-160;
+     rect(rect_i, rect_j,400,60);
    }
-   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 275 && mouseY < 335) )
+   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 280 && mouseY < 340) )
    {
      image(Endurance, width/2+150, height/2-225);
      Default = Endurance;
@@ -315,8 +337,11 @@ void Special()
      DefaultPosH  = height/2-225;
      DefaultSizeW = 500;
      DefaultSizeH = 500;
+     rect_i = width/2-438;
+     rect_j = height/2-80;
+     rect(rect_i, rect_j,400,60);
    }
-   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 355 && mouseY < 415) )
+   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 360 && mouseY < 420) )
    {
      image(Charisma, width/2+200, height/2-195, 275, 425);
      Default = Charisma;
@@ -324,9 +349,49 @@ void Special()
      DefaultPosH = height/2 - 195;
      DefaultSizeW = 275;
      DefaultSizeH = 425;
+     rect_i = width/2-438;
+     rect_j = height/2-5;
+     rect(rect_i, rect_j,400,60);
+   }
+   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 430 && mouseY < 485) )
+   {
+     image(Intelligence, width/2+200, height/2-195, 400, 400);
+     Default = Intelligence;
+     DefaultPosW = width/2+200;
+     DefaultPosH = height/2 - 195;
+     DefaultSizeW = 400;
+     DefaultSizeH = 400;
+     rect_i = width/2-438;
+     rect_j = height/2+70;
+     rect(rect_i, rect_j,400,60);
+   }
+   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 510 && mouseY < 570) )
+   {
+     image(Agility, width/2+200, height/2-195, 400, 400);
+     Default = Agility;
+     DefaultPosW = width/2+200;
+     DefaultPosH = height/2 - 195;
+     DefaultSizeW = 400;
+     DefaultSizeH = 400;
+     rect_i = width/2-438;
+     rect_j = height/2+145;
+     rect(rect_i, rect_j,400,60);
+   }   
+   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 590 && mouseY < 660) )
+   {
+     image(Luck, width/2+150, height/2-195, 400, 400);
+     Default = Luck;
+     DefaultPosW = width/2+150;
+     DefaultPosH = height/2 - 195;
+     DefaultSizeW = 400;
+     DefaultSizeH = 400;
+     rect_i = width/2-438;
+     rect_j = height/2+220;
+     rect(rect_i, rect_j,400,60);
    }
    else
    {
      image(Default, DefaultPosW, DefaultPosH, DefaultSizeW, DefaultSizeH);
+     rect(rect_i, rect_j,400,60);
    }
 }
