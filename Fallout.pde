@@ -28,7 +28,7 @@ int i = 0;
 
 void draw()
 {
-  if(frameCount < 300)//Load Start Up
+  /*if(frameCount < 300)//Load Start Up
   {
     i = StartUp(i);
   }
@@ -37,9 +37,9 @@ void draw()
     FinishStartUp();
   }
   else if(counter > 150)//Load Menu
-  {
-    Menu_Stats();
-  }
+  {*/
+    Menu();
+  //}
 }
 
 
@@ -118,9 +118,10 @@ void FinishStartUp()
    counter++;
 }
 
-void Menu_Stats()
+void Menu()
 {
-  Status();
+  //Status();
+  Special();
 }
 
 void Status()
@@ -154,7 +155,7 @@ void Status()
    textFont(startup_font, 50);
    fill(40,255,75,200);
    text("STATUS", 158, 115);
-   fill(40,255,75,130);
+   fill(40,255,75,80);
    text("SPECIAL", 370, 115);
    fill(40,255,75,80);
    text("PERKS", 605, 115);
@@ -174,7 +175,7 @@ void Status()
    rect(490, height-45, 460, 20);
    fill(40,255,75);
    rect(490,height-45, 50, 20);
-   text("AP 40/90", width-200, height-20);
+   text("AP 50/120", width-205, height-20);
 
    /*if(frameCount % 10 == 0)
    {*/
@@ -203,4 +204,75 @@ void Status()
    textFont(startup_font, 30);
    text("STIMPAX (1)", 30, height-95);
    text("RADAWAY (0)", 235, height-95);
+}
+
+void Special()
+{
+    background(0,51,20,40);
+  for(int i=0; i < height; i+=10)
+  {
+    stroke(0,50);
+    line(0, i, width, i);
+  }
+   //Menu Index
+   fill(40,255,75);
+   textFont(startup_font, 60);
+   text("STAT", 180, 50);
+   text("INV", 390, 50);
+   text("DATA", 565, 50);
+   text("MAP", 790, 50);
+   text("RADIO", 990, 50);
+   //Menu Index Border
+   stroke(40, 255, 75);
+   line(15, 60, 15, 90);//Left Side
+   line(15, 60, 170, 60);
+   line(170, 60, 170, 30);
+   line(170, 30, 175, 30);
+   
+   line(330, 30, 335, 30);//Right Side
+   line(335, 30, 335, 60);
+   line(335, 60, width-15, 60);
+   line(width-15, 60, width-15, 90);
+   //Sub Index
+   textFont(startup_font, 50);
+   fill(40,255,75,80);
+   text("STATUS", 158, 115);
+   fill(40,255,75,200);
+   text("SPECIAL", 370, 115);
+   fill(40,255,75,80);
+   text("PERKS", 605, 115);
+   
+   //Info at the bottom of the screen
+   fill(0, 150, 40);
+   rect(15, height-60, 300, 50);//Health
+   rect(320, height-60, 650, 50);//Level
+   rect(975, height-60, 375, 50);//AP
+
+   fill(40,255,75);
+   textFont(startup_font, 40);
+   text("HP 75/135", 20, height-20);
+   text("Level 13", 325, height-20);
+   stroke(40,255,75);
+   noFill();
+   rect(490, height-45, 460, 20);
+   fill(40,255,75);
+   rect(490,height-45, 50, 20);
+   text("AP 50/120", width-205, height-20);
+   
+   textFont(startup_font, 50);
+   text("Strength", 250, 200);
+   text("Perception", 250, 275);
+   text("Endurance", 250, 350);
+   text("Charisma", 250, 425);
+   text("Intelligence", 250, 500);
+   text("Agility", 250, 575);
+   text("Luck", 250, 650);
+   
+   text("6", 600, 200);
+   text("5", 600, 275);
+   text("3", 600, 350);
+   text("5", 600, 425);
+   text("3", 600, 500);
+   text("3", 600, 575);
+   text("3", 600, 650);
 }
