@@ -16,10 +16,13 @@ void setup()
   //Set Up Menu_Status
   Cripple=loadImage("Fallout_Cripple(1).png");
   Cripple2=loadImage("Fallout_Cripple(2).png");
+  //Set Up Menu_Special
+  Strength=loadImage("Strength.png");
 }
 
 PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Cripple2;//Images for Menu_Status
+PImage Strength;//Images for Special
 
 PFont startup_font;
 int counter = 0;
@@ -258,7 +261,7 @@ void Special()
    fill(40,255,75);
    rect(490,height-45, 50, 20);
    text("AP 50/120", width-205, height-20);
-   
+   //S.P.E.C.I.A.L
    textFont(startup_font, 50);
    text("Strength", 250, 200);
    text("Perception", 250, 275);
@@ -267,7 +270,7 @@ void Special()
    text("Intelligence", 250, 500);
    text("Agility", 250, 575);
    text("Luck", 250, 650);
-   
+   //Values
    text("6", 600, 200);
    text("5", 600, 275);
    text("3", 600, 350);
@@ -275,4 +278,8 @@ void Special()
    text("3", 600, 500);
    text("3", 600, 575);
    text("3", 600, 650);
+   noFill();
+   rect(245,150,400,60);
+   
+   image(Strength, width/2+150, height/2-225, 400,500);
 }
