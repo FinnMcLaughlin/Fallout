@@ -25,18 +25,31 @@ void draw()
   {
     i = StartUp(i);
   }
-  else if(frameCount > 300 && counter < 1)
+  else if(frameCount > 300 && counter <= 150)
   {
     FinishStartUp();
+  }
+  else if(counter > 150)
+  {
+    Menu_Stats();
   }
 }
 
 int StartUp(int i)
 {
-
+       stroke(40,255,75);
+       line(15, 15, width-15, 15);
+       line(15, 15, 15, 65);
+       line(width-15, 15, width-15, 65);
+       
+       stroke(40,255,75);
+       line(15, height-15, width-15, height-15);
+       line(15, height-15, 15, height-65);
+       line(width-15, height-15, width-15, height-65);
+       
        fill(40,255,75);
        ellipse(width/2, height/2, 400, 400);
-       
+     
        image(Start_Up1, width/2-180, height/2-160, 350,350);
        textFont(startup_font, 60);
        text("Starting Up", width/2-150, height/2 + 300);
@@ -76,10 +89,39 @@ void FinishStartUp()
     line(0, i, width, i);
   }
   
+  stroke(40,255,75);
+  line(15, 15, width-15, 15);
+  line(15, 15, 15, 65);
+  line(width-15, 15, width-15, 65);
+       
+  stroke(40,255,75);
+  line(15, height-15, width-15, height-15);
+  line(15, height-15, 15, height-65);
+  line(width-15, height-15, width-15, height-65);
+  
    fill(40,255,75);
    ellipse(width/2, height/2, 400, 400);
        
    image(Start_Up2, width/2-180, height/2-160, 350,350);
    textFont(startup_font, 60);
-   text("Complete", width/2-150, height/2 + 300);   
+   text("Complete", width/2-150, height/2 + 300);
+   
+   counter++;
+}
+
+void Menu_Stats()
+{
+  background(0,51,20,40);
+  for(int i=0; i < height; i+=10)
+  {
+    stroke(0,50);
+    line(0, i, width, i);
+  }
+  
+   textFont(startup_font, 60);
+   text("STAT", 150, 50);
+   text("INV", 350, 50);
+   text("DATA", 550, 50);
+   text("MAP", 750, 50);
+   text("RADIO", 950, 50);
 }
