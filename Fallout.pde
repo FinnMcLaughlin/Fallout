@@ -9,12 +9,15 @@ void setup()
     line(0, i, width, i);
   }
   
-  Start_Up1=loadImage("Vault_Boy.png");
+  Start_Up1=loadImage("StartingUp.png");
   Start_Up2=loadImage("Start_Complete.png");
   startup_font = createFont("Monofonto",16,true);
+  
+  Cripple=loadImage("Fallout_Cripple(1).png");
 }
 
 PImage Start_Up1, Start_Up2;
+PImage Cripple;
 PFont startup_font;
 int counter = 0;
 int i = 0;
@@ -52,7 +55,7 @@ int StartUp(int i)
      
        image(Start_Up1, width/2-180, height/2-160, 350,350);
        textFont(startup_font, 60);
-       text("Starting Up", width/2-150, height/2 + 300);
+       text("Starting Up", width/2-150, height/2 + 300); //Change to Establishing Connection
        noStroke();
        rect(width/2 + 160, height/2 + 290, 10,10);
      
@@ -104,7 +107,7 @@ void FinishStartUp()
        
    image(Start_Up2, width/2-180, height/2-160, 350,350);
    textFont(startup_font, 60);
-   text("Complete", width/2-150, height/2 + 300);
+   text("Complete", width/2-150, height/2 + 300); //Change to Success
    
    counter++;
 }
@@ -165,5 +168,15 @@ void Status()
    text("SPECIAL", 370, 115);
    fill(40,255,75,80);
    text("PERKS", 605, 115);
-     
+
+   image(Cripple, width/2-150, height/2-200);
+   fill(40,255,75);
+   rect(width/2-50, height/2-225, 100, 20);
+   rect(width/2-220, height/2-50, 100, 20);
+   noFill();
+   rect(width/2+100, height/2, 100, 20);
+   fill(40,255,75);
+   rect(width/2+100, height/2, 30, 20);
+   rect(width/2-200, height/2+150, 100, 20);
+   rect(width/2+70, height/2+180, 100, 20);
 }
