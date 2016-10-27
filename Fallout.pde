@@ -8,7 +8,7 @@ void setup()
     stroke(0,50);
     line(0, i, width, i);
   }
-  
+
   //Set Up for Start Up Screen
   Start_Up1=loadImage("StartingUp.png");
   Start_Up2=loadImage("Start_Complete.png");
@@ -18,15 +18,23 @@ void setup()
   Cripple2=loadImage("Fallout_Cripple(2).png");
   //Set Up Menu_Special
   Strength=loadImage("Strength.png");
+  Perception=loadImage("Perception.png");
+  Endurance=loadImage("Endurance.png");
+  Charisma=loadImage("Charisma.png");
+  
+  Default = Strength;
 }
 
 PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Cripple2;//Images for Menu_Status
-PImage Strength;//Images for Special
+PImage Default, Strength, Perception, Endurance, Charisma;//Images for Special
 
 PFont startup_font;
+int DefaultPosW = width/2+150;
+int DefaultPosH = height/2-225;
+int DefaultSizeW = 400;
+int DefaultSizeH = 500;
 int counter = 0;
-float fade;
 int i = 0;
 
 void draw()
@@ -281,5 +289,44 @@ void Special()
    noFill();
    rect(245,150,400,60);
    
-   image(Strength, width/2+150, height/2-225, 400,500);
+   if( (mouseX > 245 && mouseX < 645) && (mouseY > 150 && mouseY < 210) )
+   {
+     image(Strength, width/2+150, height/2-225, 400,500);
+     Default = Strength;
+     DefaultPosW =  width/2+150;
+     DefaultPosH  = height/2-225;
+     DefaultSizeW = 400;
+     DefaultSizeH = 500;
+   }
+   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 215 && mouseY < 275) )
+   {
+     image(Perception, width/2+150, height/2-225, 400,500);
+     Default = Perception;
+     DefaultPosW =  width/2+150;
+     DefaultPosH  = height/2-225;
+     DefaultSizeW = 400;
+     DefaultSizeH = 500;     
+   }
+   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 275 && mouseY < 335) )
+   {
+     image(Endurance, width/2+150, height/2-225);
+     Default = Endurance;
+     DefaultPosW =  width/2+150;
+     DefaultPosH  = height/2-225;
+     DefaultSizeW = 500;
+     DefaultSizeH = 500;
+   }
+   else if( (mouseX > 245 && mouseX < 645) && (mouseY > 355 && mouseY < 415) )
+   {
+     image(Charisma, width/2+200, height/2-195, 275, 425);
+     Default = Charisma;
+     DefaultPosW = width/2+200;
+     DefaultPosH = height/2 - 195;
+     DefaultSizeW = 275;
+     DefaultSizeH = 425;
+   }
+   else
+   {
+     image(Default, DefaultPosW, DefaultPosH, DefaultSizeW, DefaultSizeH);
+   }
 }
