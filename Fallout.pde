@@ -32,11 +32,11 @@ PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Cripple2;//Images for Menu_Status
 PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
 
-
 int DefaultPosW;
 int DefaultPosH;
-int DefaultSizeW = 400;
-int DefaultSizeH = 500;
+int DefaultSizeW = 350;
+int DefaultSizeH = 450;
+String DefaultString = "Strength slightly increases melee damage and carrying capacity.\nMelee damage is at 1 damage for every 2 Strength (+5 damage at 10)\nand carrying capacity is an added 10 lbs for every\npoint (+100 lbs at 10 strength)";
 int rect_i , rect_j;
 
 
@@ -229,7 +229,7 @@ void Special()
   if(counter < 1)
   {
     DefaultPosW = width/2+150;
-    DefaultPosH = height/2-225;
+    DefaultPosH = height/2-275;
     rect_i = width/2-438;
     rect_j = height/2-234;
     counter = 1;  
@@ -304,18 +304,21 @@ void Special()
    text("3", 600, 650);
    noFill();
    
+   textFont(startup_font, 20);
    
    if( (mouseX > 245 && mouseX < 645) && (mouseY > 150 && mouseY < 210) )
    {
-     image(Strength, width/2+150, height/2-225, 400,500);
+     image(Strength, width/2+150, height/2-275, 350, 450);
      Default = Strength;
      DefaultPosW =  width/2+150;
-     DefaultPosH  = height/2-225;
-     DefaultSizeW = 400;
-     DefaultSizeH = 500;
+     DefaultPosH  = height/2-275;
+     DefaultSizeW = 350;
+     DefaultSizeH = 450;
      rect_i = width/2-438;
      rect_j = height/2-234;
      rect(rect_i, rect_j,400,60);
+     DefaultString = "Strength slightly increases melee damage and carrying capacity.\nMelee damage is at 1 damage for every 2 Strength (+5 damage at 10)\nand carrying capacity is an added 10 lbs for every\npoint (+100 lbs at 10 strength)";
+     text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 215 && mouseY < 275) )
    {
@@ -352,6 +355,7 @@ void Special()
      rect_i = width/2-438;
      rect_j = height/2-5;
      rect(rect_i, rect_j,400,60);
+     
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 430 && mouseY < 485) )
    {
@@ -393,5 +397,6 @@ void Special()
    {
      image(Default, DefaultPosW, DefaultPosH, DefaultSizeW, DefaultSizeH);
      rect(rect_i, rect_j,400,60);
+     text(DefaultString, width/2+30, height/2+200);
    }
 }
