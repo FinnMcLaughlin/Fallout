@@ -37,7 +37,7 @@ int DefaultPosH;
 int DefaultSizeW = 350;
 int DefaultSizeH = 450;
 String DefaultString = "Strength slightly increases melee damage and carrying capacity.\nMelee damage is at 1 damage for every 2 Strength (+5 damage at 10)\nand carrying capacity is an added 10 lbs for every\npoint (+100 lbs at 10 strength)";
-int rect_i , rect_j;
+int rect_i , rect_j, Special_counter = 0;
 
 
 PFont startup_font;
@@ -226,13 +226,13 @@ void Status()
 
 void Special()
 {
-  if(counter < 1)
+  if(Special_counter < 1)
   {
     DefaultPosW = width/2+150;
     DefaultPosH = height/2-275;
     rect_i = width/2-438;
     rect_j = height/2-234;
-    counter = 1;  
+    Special_counter = 1;  
   }
   
   background(0,51,20,40);
@@ -322,76 +322,87 @@ void Special()
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 215 && mouseY < 275) )
    {
-     image(Perception, width/2+150, height/2-225, 400,500);
+     image(Perception, width/2+150, height/2-280, 375,475);
      Default = Perception;
      DefaultPosW =  width/2+150;
-     DefaultPosH  = height/2-225;
-     DefaultSizeW = 400;
-     DefaultSizeH = 500;
+     DefaultPosH  = height/2-280;
+     DefaultSizeW = 375;
+     DefaultSizeH = 475;
      rect_i = width/2-438;
      rect_j = height/2-160;
      rect(rect_i, rect_j,400,60);
+     DefaultString = "Perception determines how far away enemies can be detected on the\ncompass (enemies show as red bars). When playing with a high\nPerception, it is possible to sense the enemies even before they come\ninto view.";
+     text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 280 && mouseY < 340) )
    {
-     image(Endurance, width/2+150, height/2-225);
+     image(Endurance, width/2+150, height/2-280, 450, 450);
      Default = Endurance;
      DefaultPosW =  width/2+150;
-     DefaultPosH  = height/2-225;
-     DefaultSizeW = 500;
-     DefaultSizeH = 500;
+     DefaultPosH  = height/2-280;
+     DefaultSizeW = 450;
+     DefaultSizeH = 450;
      rect_i = width/2-438;
      rect_j = height/2-80;
      rect(rect_i, rect_j,400,60);
+     DefaultString = "Endurance determines a character's environmental resistances (poison,\nradiation), Hit Points, and Healing Rate, as well as the starting levels of\nthe Unarmed and Survival skills. It also determines the number of\nimplants allowed.";
+     text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 360 && mouseY < 420) )
    {
-     image(Charisma, width/2+200, height/2-195, 275, 425);
+     image(Charisma, width/2+200, height/2-230, 255, 405);
      Default = Charisma;
      DefaultPosW = width/2+200;
-     DefaultPosH = height/2 - 195;
-     DefaultSizeW = 275;
-     DefaultSizeH = 425;
+     DefaultPosH = height/2 - 230;
+     DefaultSizeW = 255;
+     DefaultSizeH = 405;
      rect_i = width/2-438;
      rect_j = height/2-5;
      rect(rect_i, rect_j,400,60);
-     
+     DefaultString = "Charisma increases the disposition of all NPCs, which makes Speech\nchecks easier. Disposition is also affected somewhat by Karma, quests,\nand dialog options. Charisma also affects the Barter and Speech skills.";
+     text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 430 && mouseY < 485) )
    {
-     image(Intelligence, width/2+200, height/2-195, 400, 400);
+     image(Intelligence, width/2+200, height/2-230, 400, 400);
      Default = Intelligence;
      DefaultPosW = width/2+200;
-     DefaultPosH = height/2 - 195;
+     DefaultPosH = height/2 - 230;
      DefaultSizeW = 400;
      DefaultSizeH = 400;
      rect_i = width/2-438;
      rect_j = height/2+70;
      rect(rect_i, rect_j,400,60);
+     DefaultString = "Intelligence determines the number of skill points earned per level up.\nThe base number of skill points gained per level is 10 + INT. Skill points\ngained for raised Intelligence are not retroactive for past levels, so\nincreasing this primary stat early, if at all, is the best.";
+     text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 510 && mouseY < 570) )
    {
-     image(Agility, width/2+200, height/2-195, 400, 400);
+     image(Agility, width/2+200, height/2-230, 400, 400);
      Default = Agility;
      DefaultPosW = width/2+200;
-     DefaultPosH = height/2 - 195;
+     DefaultPosH = height/2 - 230;
      DefaultSizeW = 400;
      DefaultSizeH = 400;
      rect_i = width/2-438;
      rect_j = height/2+145;
      rect(rect_i, rect_j,400,60);
+     DefaultString = "Agility determines the number of Action Points available for use in\nV.A.T.S.";
+     text(DefaultString, width/2+30, height/2+200);
    }   
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 590 && mouseY < 660) )
    {
-     image(Luck, width/2+150, height/2-195, 400, 400);
+     image(Luck, width/2+150, height/2-230, 400, 400);
      Default = Luck;
      DefaultPosW = width/2+150;
-     DefaultPosH = height/2 - 195;
+     DefaultPosH = height/2 - 230;
      DefaultSizeW = 400;
      DefaultSizeH = 400;
      rect_i = width/2-438;
      rect_j = height/2+220;
      rect(rect_i, rect_j,400,60);
+     DefaultString = "Luck raises the value of every skill and affects Critical Chance. It also\nimproves the odds of winning at any casino game; the higher the Luck,\nthe more likely favorable outcomes on bets will be.";
+     text(DefaultString, width/2+30, height/2+200);
    }
    else
    {
