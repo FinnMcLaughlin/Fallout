@@ -467,4 +467,11 @@ void Perks()
    text("AP 50/120", width-205, height-20);
    
    //Perks
-}
+   //Rifleman – Keep your distance long and your kill-count high. Attacks with non-automatic rifles do 20% more damage.
+   //Locksmith – Your nimble fingers allow you to pick Advanced locks.
+   //Cap Collector – Buying and selling prices at vendors are now much better.
+   //Party Boy – Nobody has a good time like you! There's no chance you'll get addicted to alcohol.
+   //Sneak – Become whisper, become shadow. You are 20% harder to detect while sneaking.
+   //Mysterious Stranger – Who is he? Why does he help? Who cares! The Mysterious Stranger will appear occasionally in V.A.T.S. to lend a hand, with deadly efficiency.
+   //Medic – Stimpaks now restore 60% of lost Health, and RadAway removes 60% of radiation. 
+ }
