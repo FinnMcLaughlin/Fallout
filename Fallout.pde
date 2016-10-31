@@ -24,6 +24,12 @@ void setup()
   Intelligence=loadImage("Intelligence.png");
   Agility=loadImage("Agility.png");
   Luck=loadImage("Luck.png");
+  //Set Up Menu_Perks
+  Locksmith=loadImage("Locksmith.png");
+  Stranger=loadImage("Mysterious_Stranger.png");
+  Party=loadImage("Party.png");
+  Rifleman=loadImage("Rifleman.png");
+  Sneak=loadImage("Sneak.png");
   
   Default = Strength;
 }
@@ -31,6 +37,7 @@ void setup()
 PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Cripple2;//Images for Menu_Status
 PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
+PImage Locksmith, Stranger, Party, Rifleman, Sneak;
 
 int DefaultPosW;
 int DefaultPosH;
@@ -467,9 +474,35 @@ void Perks()
    text("AP 50/120", width-205, height-20);
    
    //Perks
+   textFont(startup_font, 50);
+   text("Locksmith", width/2-360, height/2-180);
+   text("Rifleman", width/2-360, height/2-105);
+   text("Party Animal", width/2-360, height/2-30);
+   text("Medic", width/2-360, height/2+55);
+   text("Sneak", width/2-360, height/2+130);
+   //text("Mysterious Stranger", width/2-360, height/2+205);
+   
+   if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 230 && mouseY < height/2 - 170) )
+   {
+     noFill();
+     rect(width/2-365, height/2-225, 290, 60);
+     image(Locksmith, width/2+50, height/2-250, 300, 400);
+   }
+   else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 160 && mouseY < height/2 - 100) )
+   {
+     noFill();
+     rect(width/2-365, height/2-155, 290, 60);
+     image(Rifleman, width/2+50, height/2-300, 400, 450);
+   }
+   else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 90 && mouseY < height/2 - 30) )
+   {   
+     noFill();
+     rect(width/2-365, height/2-85, 290, 60);
+     image(Party, width/2+50, height/2-300, 250, 350);
+   }
+   
    //Rifleman – Keep your distance long and your kill-count high. Attacks with non-automatic rifles do 20% more damage.
    //Locksmith – Your nimble fingers allow you to pick Advanced locks.
-   //Cap Collector – Buying and selling prices at vendors are now much better.
    //Party Boy – Nobody has a good time like you! There's no chance you'll get addicted to alcohol.
    //Sneak – Become whisper, become shadow. You are 20% harder to detect while sneaking.
    //Mysterious Stranger – Who is he? Why does he help? Who cares! The Mysterious Stranger will appear occasionally in V.A.T.S. to lend a hand, with deadly efficiency.
