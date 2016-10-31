@@ -30,6 +30,7 @@ void setup()
   Party=loadImage("Party.png");
   Rifleman=loadImage("Rifleman.png");
   Sneak=loadImage("Sneak.png");
+  Medic=loadImage("Medic.png");
   
   Default = Strength;
 }
@@ -37,7 +38,7 @@ void setup()
 PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Cripple2;//Images for Menu_Status
 PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
-PImage Locksmith, Stranger, Party, Rifleman, Sneak;
+PImage Locksmith, Stranger, Party, Rifleman, Sneak, Medic;
 
 int DefaultPosW;
 int DefaultPosH;
@@ -482,23 +483,42 @@ void Perks()
    text("Sneak", width/2-360, height/2+130);
    //text("Mysterious Stranger", width/2-360, height/2+205);
    
+   textFont(startup_font, 20);
+
    if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 230 && mouseY < height/2 - 170) )
    {
      noFill();
      rect(width/2-365, height/2-225, 290, 60);
-     image(Locksmith, width/2+50, height/2-250, 300, 400);
+     image(Locksmith, width/2+100, height/2-250, 300, 400);
+     text("Your nimble fingers allow you to pick Advanced locks.", width-575, height-180);
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 160 && mouseY < height/2 - 100) )
    {
      noFill();
      rect(width/2-365, height/2-155, 290, 60);
      image(Rifleman, width/2+50, height/2-300, 400, 450);
+     text("Keep your distance long and your kill-count high.\nAttacks with non-automatic rifles do 20% more damage.", width-575, height-180);
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 90 && mouseY < height/2 - 30) )
    {   
      noFill();
-     rect(width/2-365, height/2-85, 290, 60);
-     image(Party, width/2+50, height/2-300, 250, 350);
+     rect(width/2-365, height/2-80, 290, 65);
+     image(Party, width/2+200, height/2-200, 250, 350);
+     text("Nobody has a good time like you! There's no chance\nyou'll get addicted to alcohol.", width-575, height-180);
+   }
+   else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 20 && mouseY < height/2 + 60) )
+   {   
+     noFill();
+     rect(width/2-365, height/2+5, 290, 60);
+     image(Medic, width/2+200, height/2-200, 250, 350);
+     text("Stimpaks now restore 60% of lost Health, and RadAway\nremoves 60% of radiation.", width-575, height-180);
+   }
+   else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 + 50 && mouseY < height/2 + 130) )
+   {   
+     noFill();
+     rect(width/2-365, height/2+80, 290, 60);
+     image(Sneak, width/2+200, height/2-200, 250, 350);
+     text("Become whisper, become shadow. You are 20% harder\nto detect while sneaking.", width-575, height-180);
    }
    
    //Rifleman – Keep your distance long and your kill-count high. Attacks with non-automatic rifles do 20% more damage.
