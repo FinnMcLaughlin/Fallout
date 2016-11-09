@@ -8,6 +8,8 @@ void setup()
     stroke(0,50);
     line(0, i, width, i);
   }
+  
+  spec_table = loadTable("Special.csv", "header");
 
   //Set Up for Start Up Screen
   Start_Up1=loadImage("StartingUp.png");
@@ -39,6 +41,10 @@ void setup()
   Default_P=Locksmith;  
 }
 
+Table spec_table;
+Special Spec;
+ArrayList<Special> Spec_Array = new ArrayList<Special>();
+
 PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Healthy;//Images for Menu_Status
 PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
@@ -57,9 +63,35 @@ int menu_counter = 0;
 int stimp_count = 1;
 int i = 0;
 
+void loadData()
+{
+  for(TableRow row:spec_table.rows())
+  {
+    Special Spec = new Special(row.getString("Default"),
+                               row.getFloat("DefaultPosW"),
+                               row.getFloat("DefaultPosH"),
+                               row.getInt("DefaultSizeW"),
+                               row.getInt("DefaultSizeH"),
+                               row.getFloat("rect_i"),
+                               row.getFloat("rect_j"),
+                               row.getString("DefaultString")
+                               );
+                               Spec_Array.add(Spec);
+  }
+}
+
+void print()
+{
+  for(Special Spec : Spec_Array)
+  {
+    println(Spec);
+  }
+}
+
+
 void draw()
 {
-  /*if(frameCount < 300)//Load Start Up
+  if(frameCount < 300)//Load Start Up
   {
     i = StartUp(i);
   }
@@ -68,9 +100,9 @@ void draw()
     FinishStartUp();
   }
   else if(counter > 150)//Load Menu
-  {*/
+  {
     Menu();
-  //}
+  }
 }
 
 
@@ -159,6 +191,14 @@ void Menu()
             break;
     case 2: Perks();
             break;
+    case 3: Weapons();
+            break;
+    case 4: Apparel();
+            break;
+    case 5: Aid();
+            break;
+    case 6: Misc();
+            break;
   }
 }
 
@@ -184,7 +224,7 @@ void mouseClicked()
 {
   if( menu_counter >= 0 && menu_counter < 3)
   {
-   if( (mouseX > 150 && mouseX < 300) && (mouseY > 50 && mouseY < 150) )
+   if( (mouseX > 150 && mouseX < 350) && (mouseY > 50 && mouseY < 150) )
    {
      menu_counter = 0;
    }
@@ -195,6 +235,10 @@ void mouseClicked()
    if( (mouseX > 600 && mouseX < 800) && (mouseY > 50 && mouseY < 150) )
    {
      menu_counter = 2;
+   }
+   if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
+   {
+     menu_counter = 3;
    }
   }
   
@@ -585,5 +629,186 @@ void Perks()                                                                    
      rect(width/2-365, height/2+80, 290, 60);
      image(Sneak, width/2+200, height/2-200, 250, 350);
      text("Become whisper, become shadow. You are 20% harder\nto detect while sneaking.", width-575, height-180);
+   }
+}
+
+
+void Weapons()
+{
+   MenuIndex(); 
+ 
+  //Menu Index Border
+   stroke(40, 255, 75);
+   line(15, 60, 15, 90);//Left Side
+   line(15, 60, 380, 60);
+   line(380, 60, 380, 30);
+   line(380, 30, 385, 30);
+   
+   line(495, 30, 500, 30);//Right Side
+   line(500, 30, 500, 60);
+   line(500, 60, width-15, 60);
+   line(width-15, 60, width-15, 90); 
+   
+   //Sub Index
+   textFont(startup_font, 50);
+   fill(40,255,75,200);
+   text("WEAPONS", 150, 115);
+   fill(40,255,75,80);
+   text("APPAREL", 440, 115);
+   fill(40,255,75,80);
+   text("AID", 700, 115);
+   fill(40,255,75,80);
+   text("MISC", 820, 115);
+   
+   if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(145, 70, 265, 55);
+   }
+   if( (mouseX > 440 && mouseX < 670) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(435, 70, 235, 55);
+   }
+   if( (mouseX > 690 && mouseX < 790) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(690, 70, 100, 55);
+   }
+   if( (mouseX > 815 && mouseX < 950) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(815, 70, 140, 55);
+   }
+}
+
+void Apparel()
+{
+   MenuIndex(); 
+ 
+  //Menu Index Border
+   stroke(40, 255, 75);
+   line(15, 60, 15, 90);//Left Side
+   line(15, 60, 380, 60);
+   line(380, 60, 380, 30);
+   line(380, 30, 385, 30);
+   
+   line(495, 30, 500, 30);//Right Side
+   line(500, 30, 500, 60);
+   line(500, 60, width-15, 60);
+   line(width-15, 60, width-15, 90); 
+   
+   //Sub Index
+   textFont(startup_font, 50);
+   fill(40,255,75,80);
+   text("WEAPONS", 150, 115);
+   fill(40,255,75,200);
+   text("APPAREL", 440, 115);
+   fill(40,255,75,80);
+   text("AID", 700, 115);
+   fill(40,255,75,80);
+   text("MISC", 820, 115);
+   
+   if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(145, 70, 265, 55);
+   }
+   if( (mouseX > 440 && mouseX < 670) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(435, 70, 235, 55);
+   }
+   if( (mouseX > 690 && mouseX < 790) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(690, 70, 100, 55);
+   }
+   if( (mouseX > 815 && mouseX < 950) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(815, 70, 140, 55);
+   }
+}
+
+void Aid()
+{
+   MenuIndex(); 
+ 
+  //Menu Index Border
+   stroke(40, 255, 75);
+   line(15, 60, 15, 90);//Left Side
+   line(15, 60, 380, 60);
+   line(380, 60, 380, 30);
+   line(380, 30, 385, 30);
+   
+   line(495, 30, 500, 30);//Right Side
+   line(500, 30, 500, 60);
+   line(500, 60, width-15, 60);
+   line(width-15, 60, width-15, 90); 
+   
+   //Sub Index
+   textFont(startup_font, 50);
+   fill(40,255,75,80);
+   text("WEAPONS", 150, 115);
+   fill(40,255,75,80);
+   text("APPAREL", 440, 115);
+   fill(40,255,75,200);
+   text("AID", 700, 115);
+   fill(40,255,75,80);
+   text("MISC", 820, 115);
+   
+   if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(145, 70, 265, 55);
+   }
+   if( (mouseX > 440 && mouseX < 670) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(435, 70, 235, 55);
+   }
+   if( (mouseX > 690 && mouseX < 790) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(690, 70, 100, 55);
+   }
+   if( (mouseX > 815 && mouseX < 950) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(815, 70, 140, 55);
+   }
+}
+
+void Misc()
+{
+   MenuIndex(); 
+ 
+  //Menu Index Border
+   stroke(40, 255, 75);
+   line(15, 60, 15, 90);//Left Side
+   line(15, 60, 380, 60);
+   line(380, 60, 380, 30);
+   line(380, 30, 385, 30);
+   
+   line(495, 30, 500, 30);//Right Side
+   line(500, 30, 500, 60);
+   line(500, 60, width-15, 60);
+   line(width-15, 60, width-15, 90); 
+   
+   //Sub Index
+   textFont(startup_font, 50);
+   fill(40,255,75,80);
+   text("WEAPONS", 150, 115);
+   fill(40,255,75,80);
+   text("APPAREL", 440, 115);
+   fill(40,255,75,80);
+   text("AID", 700, 115);
+   fill(40,255,75,200);
+   text("MISC", 820, 115);
+   
+   if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(145, 70, 265, 55);
+   }
+   if( (mouseX > 440 && mouseX < 670) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(435, 70, 235, 55);
+   }
+   if( (mouseX > 690 && mouseX < 790) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(690, 70, 100, 55);
+   }
+   if( (mouseX > 815 && mouseX < 950) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(815, 70, 140, 55);
    }
 }
