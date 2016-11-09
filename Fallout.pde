@@ -13,9 +13,11 @@ void setup()
   Start_Up1=loadImage("StartingUp.png");
   Start_Up2=loadImage("Start_Complete.png");
   startup_font = createFont("Monofonto",16,true);
+  
   //Set Up Menu_Status
   Cripple=loadImage("Fallout_Cripple(1).png");
-  Cripple2=loadImage("Fallout_Cripple(2).png");
+  Healthy=loadImage("VaultBoy.png");
+  
   //Set Up Menu_Special
   Strength=loadImage("Strength.png");
   Perception=loadImage("Perception.png");
@@ -38,7 +40,7 @@ void setup()
 }
 
 PImage Start_Up1, Start_Up2;//Images for Start Up
-PImage Cripple, Cripple2;//Images for Menu_Status
+PImage Cripple, Healthy;//Images for Menu_Status
 PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
 PImage Locksmith, Default_P, Party, Rifleman, Sneak, Medic;
 
@@ -52,6 +54,7 @@ int rect_i , rect_j, Special_counter = 0;
 PFont startup_font;
 int counter = 0;
 int menu_counter = 0;
+int stimp_count = 1;
 int i = 0;
 
 void draw()
@@ -177,14 +180,31 @@ void MenuIndex()
    text("RADIO", 990, 50);
 }
 
-/*void mouseClicked()
+void mouseClicked()
 {
   if( menu_counter >= 0 && menu_counter < 3)
   {
-    if(mouseX > 150
-}*/
+   if( (mouseX > 150 && mouseX < 300) && (mouseY > 50 && mouseY < 150) )
+   {
+     menu_counter = 0;
+   }
+   if( (mouseX > 365 && mouseX < 515) && (mouseY > 50 && mouseY < 150) )
+   {
+     menu_counter = 1;
+   }
+   if( (mouseX > 600 && mouseX < 800) && (mouseY > 50 && mouseY < 150) )
+   {
+     menu_counter = 2;
+   }
+  }
+  
+  if( (mouseX > 15 && mouseX < 215) && (mouseY > height-130 && mouseY < height-80) )
+  {
+    stimp_count = 0; 
+  }
+}
 
-void Status()
+void Status()                                                                                               //Status
 {
    MenuIndex();
    
@@ -207,6 +227,21 @@ void Status()
    text("SPECIAL", 370, 115);
    fill(40,255,75,80);
    text("PERKS", 605, 115);
+   //Sub Index Boxes
+   fill(0, 150, 40, 80);
+   if( (mouseX > 150 && mouseX < 350) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(150, 70, 200, 55);
+   }
+   if( (mouseX > 365 && mouseX < 580) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(365, 70, 220, 55);
+   }
+   if( (mouseX > 600 && mouseX < 775) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(600, 70, 180, 55);
+   }
+   
    
    //Info at the bottom of the screen
    fill(0, 150, 40);
@@ -216,7 +251,6 @@ void Status()
 
    fill(40,255,75);
    textFont(startup_font, 40);
-   text("HP 75/135", 20, height-20);
    text("Level 13", 325, height-20);
    stroke(40,255,75);
    noFill();
@@ -224,8 +258,6 @@ void Status()
    fill(40,255,75);
    rect(490,height-45, 50, 20);
    text("AP 50/120", width-205, height-20);
-
-    image(Cripple2, width/2-150, height/2-200); 
    
    //Limbs
    fill(40,255,75);
@@ -243,17 +275,27 @@ void Status()
    rect(230, height-130, 200, 50);//Radaway
    fill(40,255,75);
    textFont(startup_font, 30);
-   text("STIMPAX (1)", 30, height-95);
    text("RADAWAY (0)", 235, height-95);
    
-   if( (mouseX > 150 && mouseX < 180) && (mouseY > 115 && mouseY < 130) )
+   if(stimp_count < 1)
    {
-     noFill();
-     rect(150, 115, 50, 30);
+     text("STIMPAX (0)", 30, height-95);
+     fill(40,255,75);
+     rect(width/2+100, height/2, 100, 20);
+     image(Healthy, width/2-150, height/2-200, 275, 350);
+     textFont(startup_font, 40);
+     text("HP 135/135", 20, height-20);
+   }
+   else
+   {
+     text("STIMPAX (1)", 30, height-95);
+     image(Cripple, width/2-150, height/2-200, 275, 350);
+     textFont(startup_font, 40);
+     text("HP 75/135", 20, height-20);
    }
 }
 
-void Special()
+void Special()                                                                                         //Special
 {
   if(Special_counter < 1)
   {
@@ -285,6 +327,20 @@ void Special()
    text("SPECIAL", 370, 115);
    fill(40,255,75,80);
    text("PERKS", 605, 115);
+   //Sub-Index Boxes
+   fill(0, 150, 40, 80);
+   if( (mouseX > 150 && mouseX < 350) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(150, 70, 200, 55);
+   }
+   if( (mouseX > 365 && mouseX < 580) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(365, 70, 220, 55);
+   }
+   if( (mouseX > 600 && mouseX < 775) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(600, 70, 180, 55);
+   }
    
    //Info at the bottom of the screen
    fill(0, 150, 40);
@@ -427,9 +483,11 @@ void Special()
      rect(rect_i, rect_j,400,60);
      text(DefaultString, width/2+30, height/2+200);
    }
+   
+
 }
 
-void Perks()
+void Perks()                                                                                       //Perks
 {
    MenuIndex();
    
@@ -452,6 +510,19 @@ void Perks()
    text("SPECIAL", 370, 115);
    fill(40,255,75,200);
    text("PERKS", 605, 115);
+   fill(0, 150, 40, 80);
+   if( (mouseX > 150 && mouseX < 350) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(150, 70, 200, 55);
+   }
+   if( (mouseX > 365 && mouseX < 580) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(365, 70, 220, 55);
+   }
+   if( (mouseX > 600 && mouseX < 775) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(600, 70, 180, 55);
+   }
    
    //Info at the bottom of the screen
    fill(0, 150, 40);
