@@ -24,21 +24,23 @@ void setup()
   Intelligence=loadImage("Intelligence.png");
   Agility=loadImage("Agility.png");
   Luck=loadImage("Luck.png");
+  
+  Default = Strength;
+  
   //Set Up Menu_Perks
   Locksmith=loadImage("Locksmith.png");
-  Stranger=loadImage("Mysterious_Stranger.png");
   Party=loadImage("Party.png");
   Rifleman=loadImage("Rifleman.png");
   Sneak=loadImage("Sneak.png");
   Medic=loadImage("Medic.png");
   
-  Default = Strength;
+  Default_P=Locksmith;  
 }
 
 PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Cripple2;//Images for Menu_Status
 PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
-PImage Locksmith, Stranger, Party, Rifleman, Sneak, Medic;
+PImage Locksmith, Default_P, Party, Rifleman, Sneak, Medic;
 
 int DefaultPosW;
 int DefaultPosH;
@@ -47,9 +49,9 @@ int DefaultSizeH = 450;
 String DefaultString = "Strength slightly increases melee damage and carrying capacity.\nMelee damage is at 1 damage for every 2 Strength (+5 damage at 10)\nand carrying capacity is an added 10 lbs for every\npoint (+100 lbs at 10 strength)";
 int rect_i , rect_j, Special_counter = 0;
 
-
 PFont startup_font;
 int counter = 0;
+int menu_counter = 0;
 int i = 0;
 
 void draw()
@@ -146,14 +148,20 @@ void FinishStartUp()
 
 void Menu()
 {
-  //Status();
-  //Special();
-  Perks();
+  switch(menu_counter)
+  {
+    case 0: Status();
+            break;
+    case 1: Special();
+            break;
+    case 2: Perks();
+            break;
+  }
 }
 
-void Status()
+void MenuIndex()
 {
-  background(0,51,20,40);
+    background(0,51,20,40);
   for(int i=0; i < height; i+=10)
   {
     stroke(0,50);
@@ -167,6 +175,19 @@ void Status()
    text("DATA", 565, 50);
    text("MAP", 790, 50);
    text("RADIO", 990, 50);
+}
+
+/*void mouseClicked()
+{
+  if( menu_counter >= 0 && menu_counter < 3)
+  {
+    if(mouseX > 150
+}*/
+
+void Status()
+{
+   MenuIndex();
+   
    //Menu Index Border
    stroke(40, 255, 75);
    line(15, 60, 15, 90);//Left Side
@@ -204,14 +225,7 @@ void Status()
    rect(490,height-45, 50, 20);
    text("AP 50/120", width-205, height-20);
 
-   /*if(frameCount % 10 == 0)
-   {*/
-    image(Cripple2, width/2-150, height/2-200);   // Change 
-   /*}
-   else
-   {
-     image(Cripple, width/2-150, height/2-200);
-   }*/
+    image(Cripple2, width/2-150, height/2-200); 
    
    //Limbs
    fill(40,255,75);
@@ -231,6 +245,12 @@ void Status()
    textFont(startup_font, 30);
    text("STIMPAX (1)", 30, height-95);
    text("RADAWAY (0)", 235, height-95);
+   
+   if( (mouseX > 150 && mouseX < 180) && (mouseY > 115 && mouseY < 130) )
+   {
+     noFill();
+     rect(150, 115, 50, 30);
+   }
 }
 
 void Special()
@@ -244,20 +264,8 @@ void Special()
     Special_counter = 1;  
   }
   
-  background(0,51,20,40);
-  for(int i=0; i < height; i+=10)
-  {
-    stroke(0,50);
-    line(0, i, width, i);
-  }
-   //Menu Index
-   fill(40,255,75);
-   textFont(startup_font, 60);
-   text("STAT", 180, 50);
-   text("INV", 390, 50);
-   text("DATA", 565, 50);
-   text("MAP", 790, 50);
-   text("RADIO", 990, 50);
+   MenuIndex();
+   
    //Menu Index Border
    stroke(40, 255, 75);
    line(15, 60, 15, 90);//Left Side
@@ -423,20 +431,8 @@ void Special()
 
 void Perks()
 {
-    background(0,51,20,40);
-  for(int i=0; i < height; i+=10)
-  {
-    stroke(0,50);
-    line(0, i, width, i);
-  }
-   //Menu Index
-   fill(40,255,75);
-   textFont(startup_font, 60);
-   text("STAT", 180, 50);
-   text("INV", 390, 50);
-   text("DATA", 565, 50);
-   text("MAP", 790, 50);
-   text("RADIO", 990, 50);
+   MenuIndex();
+   
    //Menu Index Border
    stroke(40, 255, 75);
    line(15, 60, 15, 90);//Left Side
@@ -481,7 +477,6 @@ void Perks()
    text("Party Animal", width/2-360, height/2-30);
    text("Medic", width/2-360, height/2+55);
    text("Sneak", width/2-360, height/2+130);
-   //text("Mysterious Stranger", width/2-360, height/2+205);
    
    textFont(startup_font, 20);
 
@@ -520,11 +515,4 @@ void Perks()
      image(Sneak, width/2+200, height/2-200, 250, 350);
      text("Become whisper, become shadow. You are 20% harder\nto detect while sneaking.", width-575, height-180);
    }
-   
-   //Rifleman – Keep your distance long and your kill-count high. Attacks with non-automatic rifles do 20% more damage.
-   //Locksmith – Your nimble fingers allow you to pick Advanced locks.
-   //Party Boy – Nobody has a good time like you! There's no chance you'll get addicted to alcohol.
-   //Sneak – Become whisper, become shadow. You are 20% harder to detect while sneaking.
-   //Mysterious Stranger – Who is he? Why does he help? Who cares! The Mysterious Stranger will appear occasionally in V.A.T.S. to lend a hand, with deadly efficiency.
-   //Medic – Stimpaks now restore 60% of lost Health, and RadAway removes 60% of radiation. 
- }
+}
