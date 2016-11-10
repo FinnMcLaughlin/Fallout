@@ -9,7 +9,6 @@ void setup()
     line(0, i, width, i);
   }
   
-  spec_table = loadTable("Special.csv", "header");
 
   //Set Up for Start Up Screen
   Start_Up1=loadImage("StartingUp.png");
@@ -39,16 +38,22 @@ void setup()
   Medic=loadImage("Medic.png");
   
   Default_P=Locksmith;  
+  
+  //Setup Weapons
+  Machete=loadImage("Machete.png");
+  SMG=loadImage("SMG.png");
+  Shotgun=loadImage("Shotgun.png");
+  Minigun=loadImage("Minigun.png");
+  Laser=loadImage("Laser.png");
+  
+  Default_Weapon = Machete;
 }
-
-Table spec_table;
-Special Spec;
-ArrayList<Special> Spec_Array = new ArrayList<Special>();
 
 PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Healthy;//Images for Menu_Status
 PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
 PImage Locksmith, Default_P, Party, Rifleman, Sneak, Medic;
+PImage Machete, SMG, Shotgun, Minigun, Laser, Default_Weapon;
 
 int DefaultPosW;
 int DefaultPosH;
@@ -63,35 +68,9 @@ int menu_counter = 0;
 int stimp_count = 1;
 int i = 0;
 
-void loadData()
-{
-  for(TableRow row:spec_table.rows())
-  {
-    Special Spec = new Special(row.getString("Default"),
-                               row.getFloat("DefaultPosW"),
-                               row.getFloat("DefaultPosH"),
-                               row.getInt("DefaultSizeW"),
-                               row.getInt("DefaultSizeH"),
-                               row.getFloat("rect_i"),
-                               row.getFloat("rect_j"),
-                               row.getString("DefaultString")
-                               );
-                               Spec_Array.add(Spec);
-  }
-}
-
-void print()
-{
-  for(Special Spec : Spec_Array)
-  {
-    println(Spec);
-  }
-}
-
-
 void draw()
 {
-  if(frameCount < 300)//Load Start Up
+  /*if(frameCount < 300)//Load Start Up
   {
     i = StartUp(i);
   }
@@ -100,9 +79,9 @@ void draw()
     FinishStartUp();
   }
   else if(counter > 150)//Load Menu
-  {
+  {*/
     Menu();
-  }
+  //}
 }
 
 
@@ -676,9 +655,66 @@ void Weapons()
    {
      rect(815, 70, 140, 55);
    }
+   
+   textFont(startup_font, 50);
+   fill(40,255,75);
+   text("Warrior's Machete", width/4-100, height/2-150);
+   text("Tactical SMG", width/4-100, height/2-75);
+   text("Hunter's Shotgun", width/4-100, height/2);
+   text("Minigun", width/4-100, height/2+75);
+   text("Laser Pistol", width/4-100, height/2+150);
+   
+   //Info at the bottom of the screen
+   fill(0, 150, 40);
+   rect(15, height-60, 350, 50);//Health
+   rect(370, height-60, 220, 50);//Level
+   rect(595, height-60, 755, 50);//AP
+
+   fill(40,255,75);
+   textFont(startup_font, 40);
+   text("WEIGHT     80/140", 20, height-20);
+   text("CAPS  602", 375, height-20);
+   text("AP 50/120", width-205, height-20);
+   
+   noFill();
+   
+   if( (mouseX > width/4-105 && mouseX < width/4+310) && (mouseY > height/2-200 && mouseY < height/2-140) )
+   {
+     rect(width/4-105, height/2-200, 415, 60);
+     image(Machete, width/2+100, height/2-250, 500, 500);
+     Default_Weapon = Machete;
+   }
+   else  if( (mouseX > width/4-105 && mouseX < width/4+200) && (mouseY > height/2-125 && mouseY < height/2-65) )
+   {
+     rect(width/4-105, height/2-125, 305, 60);
+     image(SMG, width/2+100, height/2-250, 500, 500);
+     Default_Weapon = SMG;
+   }
+   else  if( (mouseX > width/4-105 && mouseX < width/4+290) && (mouseY > height/2-50 && mouseY < height/2+10) )
+   {
+     rect(width/4-105, height/2-50, 395, 60);
+     image(Shotgun, width/2+100, height/2-250, 500, 500);
+     Default_Weapon = Shotgun;     
+   }
+   else  if( (mouseX > width/4-105 && mouseX < width/4+80) && (mouseY > height/2+25 && mouseY < height/2+95) )
+   {
+     rect(width/4-105, height/2+25, 185, 65);
+     image(Minigun, width/2+100, height/2-250, 500, 500);
+     Default_Weapon = Minigun;  
+   }
+   else  if( (mouseX > width/4-105 && mouseX < width/4+165) && (mouseY > height/2+100 && mouseY < height/2+165) )
+   {
+     rect(width/4-105, height/2+100, 270, 65);
+     image(Laser, width/2+100, height/2-250, 500, 500);
+     Default_Weapon = Laser;  
+   }
+   else
+   {
+    image(Default_Weapon, width/2+100, height/2-250, 500, 500); 
+   } 
 }
 
-void Apparel()
+void Apparel()                                                                             //Apparel
 {
    MenuIndex(); 
  
@@ -723,7 +759,7 @@ void Apparel()
    }
 }
 
-void Aid()
+void Aid()                                                                                   //Aid
 {
    MenuIndex(); 
  
