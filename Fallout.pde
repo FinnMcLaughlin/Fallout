@@ -62,6 +62,13 @@ int DefaultSizeH = 450;
 String DefaultString = "Strength slightly increases melee damage and carrying capacity.\nMelee damage is at 1 damage for every 2 Strength (+5 damage at 10)\nand carrying capacity is an added 10 lbs for every\npoint (+100 lbs at 10 strength)";
 int rect_i , rect_j, Special_counter = 0;
 
+int PDefaultPosW;
+int PDefaultPosH;
+int PDefaultSizeW = 300;
+int PDefaultSizeH = 400;
+String PDefaultString = "Your nimble fingers allow you to pick Advanced locks.";
+int P_rect_i , P_rect_j, Perk_counter = 0;
+
 PFont startup_font;
 int counter = 0;
 int menu_counter = 0;
@@ -225,7 +232,48 @@ void mouseClicked()
   {
     stimp_count = 0; 
   }
+  
+  if( menu_counter >= 3 && menu_counter < 7 )
+  {
+    if( (mouseX > 145 && mouseX < 400) && (mouseY > 70 && mouseY < 125) )
+    {
+      menu_counter = 3;
+    }
+    else if( (mouseX > 435 && mouseX < 670) && (mouseY > 70 && mouseY < 125) )
+    {
+      menu_counter = 4;
+    }
+    else if( (mouseX >  690 && mouseX < 790) && (mouseY > 70 && mouseY < 125) )
+    {
+      menu_counter = 5;
+    }
+    else if( (mouseX > 815 && mouseX < 950) && (mouseY > 70 && mouseY < 125) )
+    {
+      menu_counter = 6;
+    }
+    else if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
+    {
+      menu_counter = 0;
+    }
+  }
 }
+
+/*   if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(145, 70, 265, 55);
+   }
+   if( (mouseX > 440 && mouseX < 670) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(435, 70, 235, 55);
+   }
+   if( (mouseX > 690 && mouseX < 790) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(690, 70, 100, 55);
+   }
+   if( (mouseX > 815 && mouseX < 950) && (mouseY > 50 && mouseY < 150) )
+   {
+     rect(815, 70, 140, 55);
+   }*/
 
 void Status()                                                                                               //Status
 {
@@ -512,6 +560,13 @@ void Special()                                                                  
 
 void Perks()                                                                                       //Perks
 {
+  if(Perk_counter < 1)
+  {
+    PDefaultPosW = width/2+100;
+    PDefaultPosH = height/2-250;
+    Perk_counter = 1;  
+  }
+  
    MenuIndex();
    
    //Menu Index Border
@@ -580,6 +635,12 @@ void Perks()                                                                    
      rect(width/2-365, height/2-225, 290, 60);
      image(Locksmith, width/2+100, height/2-250, 300, 400);
      text("Your nimble fingers allow you to pick Advanced locks.", width-575, height-180);
+     Default_P = Locksmith;
+     PDefaultPosW = width/2+100;
+     PDefaultPosH = height/2-250;
+     PDefaultSizeW = 300;
+     PDefaultSizeH = 400;
+     PDefaultString = "Your nimble fingers allow you to pick Advanced locks.";
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 160 && mouseY < height/2 - 100) )
    {
@@ -587,6 +648,12 @@ void Perks()                                                                    
      rect(width/2-365, height/2-155, 290, 60);
      image(Rifleman, width/2+50, height/2-300, 400, 450);
      text("Keep your distance long and your kill-count high.\nAttacks with non-automatic rifles do 20% more damage.", width-575, height-180);
+     Default_P = Rifleman;
+     PDefaultPosW = width/2+50;
+     PDefaultPosH = height/2-300;
+     PDefaultSizeW = 400;
+     PDefaultSizeH = 450;
+     PDefaultString = "Keep your distance long and your kill-count high.\nAttacks with non-automatic rifles do 20% more damage.";
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 90 && mouseY < height/2 - 30) )
    {   
@@ -594,6 +661,12 @@ void Perks()                                                                    
      rect(width/2-365, height/2-80, 290, 65);
      image(Party, width/2+200, height/2-200, 250, 350);
      text("Nobody has a good time like you! There's no chance\nyou'll get addicted to alcohol.", width-575, height-180);
+     Default_P = Party;
+     PDefaultPosW = width/2+200;
+     PDefaultPosH = height/2-200;
+     PDefaultSizeW = 250;
+     PDefaultSizeH = 350;
+     PDefaultString = "Nobody has a good time like you! There's no chance\nyou'll get addicted to alcohol.";
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 20 && mouseY < height/2 + 60) )
    {   
@@ -601,6 +674,12 @@ void Perks()                                                                    
      rect(width/2-365, height/2+5, 290, 60);
      image(Medic, width/2+200, height/2-200, 250, 350);
      text("Stimpaks now restore 60% of lost Health, and RadAway\nremoves 60% of radiation.", width-575, height-180);
+     Default_P = Medic;
+     PDefaultPosW = width/2+200;
+     PDefaultPosH = height/2-200;
+     PDefaultSizeW = 250;
+     PDefaultSizeH = 350;
+     PDefaultString = "Stimpaks now restore 60% of lost Health, and RadAway\nremoves 60% of radiation.";
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 + 50 && mouseY < height/2 + 130) )
    {   
@@ -608,11 +687,22 @@ void Perks()                                                                    
      rect(width/2-365, height/2+80, 290, 60);
      image(Sneak, width/2+200, height/2-200, 250, 350);
      text("Become whisper, become shadow. You are 20% harder\nto detect while sneaking.", width-575, height-180);
+     Default_P = Sneak;
+     PDefaultPosW = width/2+200;
+     PDefaultPosH = height/2-200;
+     PDefaultSizeW = 250;
+     PDefaultSizeH = 350;
+     PDefaultString = "Become whisper, become shadow. You are 20% harder\nto detect while sneaking.";
+   }
+   else
+   {
+     image(Default_P, PDefaultPosW, PDefaultPosH, PDefaultSizeW, PDefaultSizeH);
+     text(PDefaultString, width-575, height-180);
    }
 }
 
 
-void Weapons()
+void Weapons()                                                                   //Weapons
 {
    MenuIndex(); 
  
@@ -638,6 +728,7 @@ void Weapons()
    text("AID", 700, 115);
    fill(40,255,75,80);
    text("MISC", 820, 115);
+   fill(0, 150, 40, 80);
    
    if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
    {
@@ -741,6 +832,7 @@ void Apparel()                                                                  
    fill(40,255,75,80);
    text("MISC", 820, 115);
    
+   fill(0, 150, 40, 80);
    if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
    {
      rect(145, 70, 265, 55);
@@ -786,6 +878,7 @@ void Aid()                                                                      
    fill(40,255,75,80);
    text("MISC", 820, 115);
    
+   fill(0, 150, 40, 80);
    if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
    {
      rect(145, 70, 265, 55);
@@ -830,7 +923,8 @@ void Misc()
    text("AID", 700, 115);
    fill(40,255,75,200);
    text("MISC", 820, 115);
-   
+  
+   fill(0, 150, 40, 80);
    if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
    {
      rect(145, 70, 265, 55);
