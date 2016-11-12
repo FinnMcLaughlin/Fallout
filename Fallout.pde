@@ -71,7 +71,7 @@ int P_rect_i , P_rect_j, Perk_counter = 0;
 
 PFont startup_font;
 int counter = 0;
-int menu_counter = 0;
+int menu_counter = 10;
 int stimp_count = 1;
 int i = 0;
 
@@ -185,6 +185,8 @@ void Menu()
             break;
     case 6: Misc();
             break;
+    case 10: Radio();
+             break;
   }
 }
 
@@ -940,5 +942,53 @@ void Misc()
    if( (mouseX > 815 && mouseX < 950) && (mouseY > 50 && mouseY < 150) )
    {
      rect(815, 70, 140, 55);
+   }
+}
+
+void Radio()
+{
+  MenuIndex();
+  
+   //Menu Index Border
+   stroke(40, 255, 75);
+   line(15, 60, 15, 90);//Left Side
+   line(15, 60, width-390, 60);
+   line(width-390, 60, width-390, 30);
+   line(width-390, 30, width-380, 30);
+   
+   line(width-180, 30, width-170, 30);//Right Side
+   line(width-170, 30, width-170, 60);
+   line(width-170, 60, width-15, 60);
+   line(width-15, 60, width-15, 90);
+   
+   noFill();
+   line(width-200, height/3-100, width-200, height/3+300);
+   line(width-700, height/3+300, width-200, height/3+300);
+   
+   for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
+   {
+     // Calculate value
+     float y = sin(x+frameCount*0.12);   // Render wave using ellipse.
+     ellipse(x*21,height/2.25+y*60,5, 5);
+   }
+   
+   textFont(startup_font, 40);
+   fill(40,255,75);
+   text("Classic Radio", width/4-200, height/2-150);
+   text("Diamond City Radio", width/4-200, height/2-75);
+   text("Military Frequency FM90", width/4-200, height/2);
+   
+   noFill();
+   if( (mouseX > width/5-140 && mouseX < width/5+120) && (mouseY > height/4 && mouseY < height/4+55) )
+   {
+     rect(width/5-140, height/4, 260, 55);
+   }
+   if( (mouseX > width/5-140 && mouseX < width/5+230) && (mouseY > height/4+75 && mouseY < height/4+130) )
+   {
+     rect(width/5-140, height/4+75, 370, 55);
+   }
+   if( (mouseX > width/5-140 && mouseX < width/5+315) && (mouseY > height/4+150 && mouseY < height/4+205) )
+   {
+     rect(width/5-140, height/4+150, 455, 55);
    }
 }
