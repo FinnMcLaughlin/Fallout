@@ -17,7 +17,7 @@ void setup()
   
   //Set Up Menu_Status
   Cripple=loadImage("Fallout_Cripple(1).png");
-  Healthy=loadImage("VaultBoy.png");
+  Healthy=loadImage("Healthy.png");
   
   //Set Up Menu_Special
   Strength=loadImage("Strength.png");
@@ -69,9 +69,11 @@ int PDefaultSizeH = 400;
 String PDefaultString = "Your nimble fingers allow you to pick Advanced locks.";
 int P_rect_i , P_rect_j, Perk_counter = 0;
 
+int radio_counter = 0;
+
 PFont startup_font;
 int counter = 0;
-int menu_counter = 10;
+int menu_counter = 0;
 int stimp_count = 1;
 int i = 0;
 
@@ -256,6 +258,22 @@ void mouseClicked()
     else if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
     {
       menu_counter = 0;
+    }
+  }
+  
+  if(menu_counter >= 10)
+  {
+    if( (mouseX > width/5-140 && mouseX < width/5+120) && (mouseY > height/4 && mouseY < height/4+55) )
+    {
+      radio_counter = 1;
+    }
+    else if(  (mouseX > width/5-140 && mouseX < width/5+230) && (mouseY > height/4+75 && mouseY < height/4+130) )
+    {
+      radio_counter = 2;
+    }
+    else if(  (mouseX > width/5-140 && mouseX < width/5+315) && (mouseY > height/4+150 && mouseY < height/4+205) )
+    {
+      radio_counter = 3;
     }
   }
 }
@@ -960,18 +978,7 @@ void Radio()
    line(width-170, 30, width-170, 60);
    line(width-170, 60, width-15, 60);
    line(width-15, 60, width-15, 90);
-   
-   noFill();
-   line(width-200, height/3-100, width-200, height/3+300);
-   line(width-700, height/3+300, width-200, height/3+300);
-   
-   for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
-   {
-     // Calculate value
-     float y = sin(x+frameCount*0.12);   // Render wave using ellipse.
-     ellipse(x*21,height/2.25+y*60,5, 5);
-   }
-   
+      
    textFont(startup_font, 40);
    fill(40,255,75);
    text("Classic Radio", width/4-200, height/2-150);
@@ -990,5 +997,46 @@ void Radio()
    if( (mouseX > width/5-140 && mouseX < width/5+315) && (mouseY > height/4+150 && mouseY < height/4+205) )
    {
      rect(width/5-140, height/4+150, 455, 55);
+   }
+   
+   noFill();
+   line(width-200, height/3-100, width-200, height/3+300);
+   line(width-700, height/3+300, width-200, height/3+300);
+   
+   if(radio_counter == 0)
+   {
+     for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
+     {
+       // Calculate value
+       float y = sin(x+frameCount*0);   // Render wave using ellipse.
+       ellipse(x*21,height/2.25+y*0,5, 5);
+     }
+   }
+   else if(radio_counter == 1)
+   {
+     for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
+     {
+       // Calculate value
+       float y = sin(x+frameCount*0.12);   // Render wave using ellipse.
+       ellipse(x*21,height/2.25+y*60,5, 5);
+     }  
+   }
+   else if(radio_counter == 2)
+   {
+     for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
+     {
+       // Calculate value
+       float y = sin(x+frameCount*0.2);   // Render wave using ellipse.
+       ellipse(x*21,height/2.25+y*30,5, 5);
+     }   
+   }
+   else if(radio_counter == 3)
+   {
+     for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
+     {
+       // Calculate value
+       float y = sin(x+frameCount*0.4);   // Render wave using ellipse.
+       ellipse(x*21,height/2.25+y*100,5, 5);
+     }
    }
 }
