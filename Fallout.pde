@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 //width: 1366 height:768
 void setup()
 {
@@ -47,6 +49,10 @@ void setup()
   Laser=loadImage("Laser.png");
   
   Default_Weapon = Machete;
+  
+  Classic = new SoundFile(this, "1812.mp3");
+  Atom = new SoundFile(this, "Atom.mp3");
+  Static = new SoundFile(this, "Static.wav");
 }
 
 PImage Start_Up1, Start_Up2;//Images for Start Up
@@ -70,10 +76,14 @@ String PDefaultString = "Your nimble fingers allow you to pick Advanced locks.";
 int P_rect_i , P_rect_j, Perk_counter = 0;
 
 int radio_counter = 0;
+SoundFile Classic;
+SoundFile Atom;
+SoundFile Static;
+
 
 PFont startup_font;
 int counter = 0;
-int menu_counter = 0;
+int menu_counter = 7;
 int stimp_count = 1;
 int i = 0;
 
@@ -187,6 +197,8 @@ void Menu()
             break;
     case 6: Misc();
             break;
+    case 7: Data();
+            break;
     case 10: Radio();
              break;
   }
@@ -194,7 +206,7 @@ void Menu()
 
 void MenuIndex()
 {
-    background(0,51,20,40);
+  background(0,51,20,40);
   for(int i=0; i < height; i+=10)
   {
     stroke(0,50);
@@ -211,7 +223,7 @@ void MenuIndex()
 }
 
 void mouseClicked()
-{
+{                                                                                                                                                                                                                                                                                                                                                                                                        
   if( menu_counter >= 0 && menu_counter < 3)
   {
    if( (mouseX > 150 && mouseX < 350) && (mouseY > 50 && mouseY < 150) )
@@ -263,37 +275,41 @@ void mouseClicked()
   
   if(menu_counter >= 10)
   {
+    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
+    {
+      menu_counter = 0;
+    }
+    if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
+    {
+     menu_counter = 3;
+    }
+    
     if( (mouseX > width/5-140 && mouseX < width/5+120) && (mouseY > height/4 && mouseY < height/4+55) )
     {
       radio_counter = 1;
+      Classic.cue(300);
+      Classic.loop();
+      Atom.stop();
+      Static.stop();
     }
     else if(  (mouseX > width/5-140 && mouseX < width/5+230) && (mouseY > height/4+75 && mouseY < height/4+130) )
     {
       radio_counter = 2;
+      Atom.cue(5);
+      Atom.loop();
+      Classic.stop();
+      Static.stop();
     }
     else if(  (mouseX > width/5-140 && mouseX < width/5+315) && (mouseY > height/4+150 && mouseY < height/4+205) )
     {
       radio_counter = 3;
+      Static.cue(20);
+      Static.loop();
+      Atom.stop();
+      Classic.stop();
     }
   }
 }
-
-/*   if( (mouseX > 150 && mouseX < 400) && (mouseY > 50 && mouseY < 150) )
-   {
-     rect(145, 70, 265, 55);
-   }
-   if( (mouseX > 440 && mouseX < 670) && (mouseY > 50 && mouseY < 150) )
-   {
-     rect(435, 70, 235, 55);
-   }
-   if( (mouseX > 690 && mouseX < 790) && (mouseY > 50 && mouseY < 150) )
-   {
-     rect(690, 70, 100, 55);
-   }
-   if( (mouseX > 815 && mouseX < 950) && (mouseY > 50 && mouseY < 150) )
-   {
-     rect(815, 70, 140, 55);
-   }*/
 
 void Status()                                                                                               //Status
 {
@@ -960,6 +976,40 @@ void Misc()
    if( (mouseX > 815 && mouseX < 950) && (mouseY > 50 && mouseY < 150) )
    {
      rect(815, 70, 140, 55);
+   }
+}
+
+void Data()
+{
+   MenuIndex();
+  
+   //Menu Index Border
+   stroke(40, 255, 75);
+   line(15, 60, 15, 90);//Left Side
+   line(15, 60, 550, 60);
+   line(550, 60, 550, 30);
+   line(550, 30, 560, 30);
+   
+   line(730, 30, 720, 30);//Right Side
+   line(730, 30, 730, 60);
+   line(730, 60, width-15, 60);
+   line(width-15, 60, width-15, 90);  
+   
+   //Sub Index
+   textFont(startup_font, 50);
+   fill(40,255,75,200);
+   text("QUESTS", 425, 115);
+   fill(40,255,75,80);
+   text("STATS", 675, 115);
+   
+   noFill();
+   if( (mouseX > 420 && mouseX < 635) && (mouseY > 70 && mouseY < 125) )
+   {
+     rect(420, 70, 215, 55);
+   }
+   if( (mouseX > width/5-140 && mouseX < width/5+230) && (mouseY > height/4+75 && mouseY < height/4+130) )
+   {
+     rect(width/5-140, height/4+75, 370, 55);
    }
 }
 
