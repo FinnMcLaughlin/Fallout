@@ -83,7 +83,7 @@ SoundFile Static;
 
 PFont startup_font;
 int counter = 0;
-int menu_counter = 7;
+int menu_counter = 4;
 int stimp_count = 1;
 int i = 0;
 
@@ -277,7 +277,11 @@ void mouseClicked()
     {
       menu_counter = 6;
     }
-    if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
+    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
+    {
+      rect(960, height/2, 200, 55);
+    }
+    else if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
     {
       menu_counter = 10;
     }
