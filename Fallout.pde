@@ -223,7 +223,8 @@ void MenuIndex()
 }
 
 void mouseClicked()
-{                                                                                                                                                                                                                                                                                                                                                                                                        
+{                                                                                                 
+//-------------------------------------------------------------------------------------------------Status
   if( menu_counter >= 0 && menu_counter < 3)
   {
    if( (mouseX > 150 && mouseX < 350) && (mouseY > 50 && mouseY < 150) )
@@ -242,6 +243,10 @@ void mouseClicked()
    {
      menu_counter = 3;
    }
+   if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
+   {
+      menu_counter = 10;
+   }
   }
   
   if( (mouseX > 15 && mouseX < 215) && (mouseY > height-130 && mouseY < height-80) )
@@ -249,9 +254,14 @@ void mouseClicked()
     stimp_count = 0; 
   }
   
+//-------------------------------------------------------------------------------------------Inventory  
   if( menu_counter >= 3 && menu_counter < 7 )
   {
-    if( (mouseX > 145 && mouseX < 400) && (mouseY > 70 && mouseY < 125) )
+    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
+    {
+      menu_counter = 0;
+    }
+    else if( (mouseX > 145 && mouseX < 400) && (mouseY > 70 && mouseY < 125) )
     {
       menu_counter = 3;
     }
@@ -267,13 +277,37 @@ void mouseClicked()
     {
       menu_counter = 6;
     }
-    else if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
+    if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
     {
-      menu_counter = 0;
+      menu_counter = 10;
     }
   }
-  
-  if(menu_counter >= 10)
+//---------------------------------------------------------------------------------------------Data  
+  if(menu_counter >= 7 && menu_counter <= 8)
+  {
+    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
+     {
+        menu_counter = 0;
+     }
+    if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
+     {
+       menu_counter = 3;
+     }
+     if( (mouseX > 420 && mouseX < 635) && (mouseY > 70 && mouseY < 125) )
+     {
+       menu_counter = 7;
+     }
+     if( (mouseX > 670 && mouseX < 830) && (mouseY > 70 && mouseY < 125) )
+     {
+       menu_counter = 8;
+     }
+     if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
+     {
+       menu_counter = 10;
+     }
+  }
+//------------------------------------------------------------------------------------------------Radio   
+  if(menu_counter >= 10)                                                                                    
   {
     if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
     {
@@ -281,7 +315,7 @@ void mouseClicked()
     }
     if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
     {
-     menu_counter = 3;
+      menu_counter = 3;
     }
     
     if( (mouseX > width/5-140 && mouseX < width/5+120) && (mouseY > height/4 && mouseY < height/4+55) )
@@ -1002,14 +1036,39 @@ void Data()
    fill(40,255,75,80);
    text("STATS", 675, 115);
    
-   noFill();
+   fill(0, 150, 40, 80);
    if( (mouseX > 420 && mouseX < 635) && (mouseY > 70 && mouseY < 125) )
    {
      rect(420, 70, 215, 55);
    }
-   if( (mouseX > width/5-140 && mouseX < width/5+230) && (mouseY > height/4+75 && mouseY < height/4+130) )
+   if( (mouseX > 670 && mouseX < 830) && (mouseY > 70 && mouseY < 125) )
    {
-     rect(width/5-140, height/4+75, 370, 55);
+     rect(670, 70, 160, 55);
+   }
+   
+   textFont(startup_font, 50);
+   fill(40,255,75);
+   text("Institutionalized", width/5-100, height/2-125);
+   text("The Road to Freedom", width/5-100, height/2-50);
+   text("Curtain Call", width/5-100, height/2+25);
+   text("The Devil's Due", width/5-100, height/2+100);
+   
+   fill(0, 150, 40, 80);
+   if( (mouseX > width/5-105 && mouseX < width/5+255) && (mouseY > height/2-170 && mouseY < height/2-110) )
+   {
+     rect(width/5-105, height/2-170, 355, 55);
+   }
+   if( (mouseX > width/5-105 && mouseX < width/5+395) && (mouseY > height/2-95 && mouseY < height/2-40) )
+   {
+     rect(width/5-105, height/2-95, 500, 55);
+   }
+   if( (mouseX > width/5-105 && mouseX < width/5+165) && (mouseY > height/2-20 && mouseY < height/2+35) )
+   {
+     rect(width/5-105, height/2-20, 270, 55);
+   }
+   if( (mouseX > width/5-105 && mouseX < width/5+255) && (mouseY > height/2+55 && mouseY < height/2+110) )
+   {
+     rect(width/5-105, height/2+55, 360, 55);
    }
 }
 
