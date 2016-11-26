@@ -50,6 +50,14 @@ void setup()
   
   Default_Weapon = Machete;
   
+  //Setup Quests
+  CurtainCall = loadImage("CurtainCall.png");
+  FreedomRoad = loadImage("FreedomRoad.png");
+  Institute = loadImage("Institute.png");
+  Devil = loadImage("Devil.png");
+  
+  QDefault = Institute;
+  
   Classic = new SoundFile(this, "1812.mp3");
   Atom = new SoundFile(this, "Atom.mp3");
   Static = new SoundFile(this, "Static.wav");
@@ -60,6 +68,7 @@ PImage Cripple, Healthy;//Images for Menu_Status
 PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
 PImage Locksmith, Default_P, Party, Rifleman, Sneak, Medic;
 PImage Machete, SMG, Shotgun, Minigun, Laser, Default_Weapon;
+PImage QDefault, FreedomRoad, CurtainCall, Institute, Devil;
 
 int DefaultPosW;
 int DefaultPosH;
@@ -75,6 +84,13 @@ int PDefaultSizeH = 400;
 String PDefaultString = "Your nimble fingers allow you to pick Advanced locks.";
 int P_rect_i , P_rect_j, Perk_counter = 0;
 
+int QDefaultPosW;
+int QDefaultPosH;
+int QDefaultSizeW = 300;
+int QDefaultSizeH = 400;
+String QDefaultString = "Your nimble fingers allow you to pick Advanced locks.";
+int QCounter = 0;
+
 int radio_counter = 0;
 SoundFile Classic;
 SoundFile Atom;
@@ -83,7 +99,7 @@ SoundFile Static;
 
 PFont startup_font;
 int counter = 0;
-int menu_counter = 4;
+int menu_counter = 0;
 int stimp_count = 1;
 int i = 0;
 
@@ -243,6 +259,10 @@ void mouseClicked()
    {
      menu_counter = 3;
    }
+   if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
+   {
+      menu_counter = 6;
+   }
    if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
    {
       menu_counter = 10;
@@ -277,10 +297,10 @@ void mouseClicked()
     {
       menu_counter = 6;
     }
-    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
-    {
-      rect(960, height/2, 200, 55);
-    }
+     if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
+     {
+        menu_counter = 7;
+     }
     else if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
     {
       menu_counter = 10;
@@ -320,6 +340,10 @@ void mouseClicked()
     if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
     {
       menu_counter = 3;
+    }
+    if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
+    {
+      menu_counter = 7;
     }
     
     if( (mouseX > width/5-140 && mouseX < width/5+120) && (mouseY > height/4 && mouseY < height/4+55) )
@@ -1019,6 +1043,15 @@ void Misc()
 
 void Data()
 {
+  if(QCounter < 1)
+  {
+         QDefault = Institute;
+     QDefaultPosW = width/2+50;
+     QDefaultPosH = height/4;
+     QDefaultSizeW = 600;
+     QDefaultSizeH = 400;
+     QCounter = 1;
+  }
    MenuIndex();
   
    //Menu Index Border
@@ -1061,18 +1094,46 @@ void Data()
    if( (mouseX > width/5-105 && mouseX < width/5+255) && (mouseY > height/2-170 && mouseY < height/2-110) )
    {
      rect(width/5-105, height/2-170, 355, 55);
+     image(Institute, width/2+50, height/4, 600, 400);
+     QDefault = Institute;
+     QDefaultPosW = width/2+50;
+     QDefaultPosH = height/4;
+     QDefaultSizeW = 600;
+     QDefaultSizeH = 400;
    }
-   if( (mouseX > width/5-105 && mouseX < width/5+395) && (mouseY > height/2-95 && mouseY < height/2-40) )
+   else if( (mouseX > width/5-105 && mouseX < width/5+395) && (mouseY > height/2-95 && mouseY < height/2-40) )
    {
      rect(width/5-105, height/2-95, 500, 55);
+     image(FreedomRoad, width/2+50, height/4, 600, 400);
+     QDefault = FreedomRoad;
+     QDefaultPosW = width/2+50;
+     QDefaultPosH = height/4;
+     QDefaultSizeW = 600;
+     QDefaultSizeH = 400;
    }
-   if( (mouseX > width/5-105 && mouseX < width/5+165) && (mouseY > height/2-20 && mouseY < height/2+35) )
+   else if( (mouseX > width/5-105 && mouseX < width/5+165) && (mouseY > height/2-20 && mouseY < height/2+35) )
    {
      rect(width/5-105, height/2-20, 270, 55);
+     image(CurtainCall, width/2+50, height/4, 600, 400);
+     QDefault = CurtainCall;
+     QDefaultPosW = width/2+50;
+     QDefaultPosH = height/4;
+     QDefaultSizeW = 600;
+     QDefaultSizeH = 400;
    }
-   if( (mouseX > width/5-105 && mouseX < width/5+255) && (mouseY > height/2+55 && mouseY < height/2+110) )
+   else if( (mouseX > width/5-105 && mouseX < width/5+255) && (mouseY > height/2+55 && mouseY < height/2+110) )
    {
      rect(width/5-105, height/2+55, 360, 55);
+     image(Devil, width/2-100, height/4-100, 800, 600);
+     QDefault = Devil;
+     QDefaultPosW = width/2-100;
+     QDefaultPosH = height/4-100;
+     QDefaultSizeW = 800;
+     QDefaultSizeH = 600;
+   }
+   else
+   {
+     image(QDefault, QDefaultPosW, QDefaultPosH, QDefaultSizeW, QDefaultSizeH); 
    }
 }
 
