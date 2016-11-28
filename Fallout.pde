@@ -1045,7 +1045,19 @@ void Apparel()                                                                  
    else
    {
      image(ADefault, width/2+125, height/2-250, 300, 500);
-   }    
+   }
+   
+   //Info at the bottom of the screen
+   fill(0, 150, 40);
+   rect(15, height-60, 350, 50);//Health
+   rect(370, height-60, 220, 50);//Level
+   rect(595, height-60, 755, 50);//AP
+
+   fill(40,255,75);
+   textFont(startup_font, 40);
+   text("WEIGHT     80/140", 20, height-20);
+   text("CAPS  602", 375, height-20);
+   text("AP 50/120", width-205, height-20);
 }
 
 void Aid()                                                                                   //Aid
@@ -1128,7 +1140,19 @@ void Aid()                                                                      
    else
    {
      image(Aid_Default, width/2+125, height/2-250, 300, 500);
-   }    
+   }
+   
+   //Info at the bottom of the screen
+   fill(0, 150, 40);
+   rect(15, height-60, 350, 50);//Health
+   rect(370, height-60, 220, 50);//Level
+   rect(595, height-60, 755, 50);//AP
+
+   fill(40,255,75);
+   textFont(startup_font, 40);
+   text("WEIGHT     80/140", 20, height-20);
+   text("CAPS  602", 375, height-20);
+   text("AP 50/120", width-205, height-20);
 }
 
 
@@ -1176,6 +1200,18 @@ void Misc()
    {
      rect(815, 70, 140, 55);
    }
+   
+   //Info at the bottom of the screen
+   fill(0, 150, 40);
+   rect(15, height-60, 350, 50);//Health
+   rect(370, height-60, 220, 50);//Level
+   rect(595, height-60, 755, 50);//AP
+
+   fill(40,255,75);
+   textFont(startup_font, 40);
+   text("WEIGHT     80/140", 20, height-20);
+   text("CAPS  602", 375, height-20);
+   text("AP 50/120", width-205, height-20);
 }
 
 void Data()
