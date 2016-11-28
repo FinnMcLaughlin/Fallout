@@ -1228,19 +1228,20 @@ void Map()
    noFill();
    if((mouseX > width/2+5 && mouseX < width/2+75) && (mouseY > height/2-15 && mouseY < height/2+35))
    {
-     text("House", width/2+10, height/2+50);
+     text("Trinity", width/2+15, height/2+50);
+     text("Headquaters", width/2-15, height/2+70);
    }
    if((mouseX > width/2-100 && mouseX < width/2-5) && (mouseY > height/2-170 && mouseY < height/2-100))
    {
-     text("Church", width/2-85, height/2-80);
+     text("Christ Church", width/2-115, height/2-80);
    }
    if((mouseX > width/4-200 && mouseX < width/4-105) && (mouseY > height/2+230 && mouseY < height/2+300))
    {
-     text("Swamp", width/4-185, height/2+320);
+     text("Barley Swamp", width/4-215, height/2+320);
    }
    if((mouseX > width/4+90 && mouseX < width/4+185) && (mouseY > height/2+60 && mouseY < height/2+130))
    {
-     text("Office", width/4+110, height/2+150);
+     text("Diamond City", width/4+85, height/2+150);
    }   
    if((mouseX > width/2-97 && mouseX < width/2-55) && (mouseY > height/2+60 && mouseY < height/2+95))
    {
