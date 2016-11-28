@@ -50,6 +50,14 @@ void setup()
   
   Default_Weapon = Machete;
   
+  //Setup Apparel
+  Raider = loadImage("Raider.png");
+  Suit = loadImage("Suit.png");
+  Scavenge = loadImage("Scavenger.png");
+  Cowboy = loadImage("CowboyOutfit.png");
+  
+  ADefault = Raider;
+  
   //Setup Quests
   CurtainCall = loadImage("CurtainCall.png");
   FreedomRoad = loadImage("FreedomRoad.png");
@@ -72,6 +80,7 @@ PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility
 PImage Locksmith, Default_P, Party, Rifleman, Sneak, Medic;
 PImage Machete, SMG, Shotgun, Minigun, Laser, Default_Weapon;
 PImage QDefault, FreedomRoad, CurtainCall, Institute, Devil;
+PImage ADefault, Raider, Suit, Scavenge, Cowboy;
 PImage Map;
 
 int DefaultPosW;
@@ -104,7 +113,7 @@ SoundFile Static;
 
 PFont startup_font;
 int counter = 0;
-int menu_counter = 9;
+int menu_counter = 4;
 int stimp_count = 1;
 int i = 0;
 
@@ -990,6 +999,44 @@ void Apparel()                                                                  
    {
      rect(815, 70, 140, 55);
    }
+   
+   textFont(startup_font, 50);
+   fill(40,255,75);
+   text("Raider Armour", width/5-100, height/2-125);
+   text("Fancy Suit", width/5-100, height/2-50);
+   text("Cowboy Outfit", width/5-100, height/2+25);
+   text("Scavenger Clothes", width/5-100, height/2+100);
+   
+   noFill();
+   
+   if( (mouseX > width/5-100 && mouseX < width/5+230) && (mouseY > height/2-175 && mouseY < height/2-115) )
+   {
+     rect(width/5-100, height/2-175, 330, 60);
+     image(Raider, width/2+125, height/2-250, 300, 500);
+     ADefault = Raider;
+   }
+   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2-100 && mouseY < height/2-40) )
+   {
+     rect(width/5-100, height/2-100, 245, 60);
+     image(Suit, width/2+125, height/2-250, 300, 500);
+     ADefault = Suit;
+   }
+   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2-50 && mouseY < height/2+10) )
+   {
+     rect(width/5-100, height/2-25, 325, 60);
+     image(Cowboy, width/2+125, height/2-250, 300, 500);
+     ADefault = Cowboy;
+   }
+   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2+25 && mouseY < height/2+95) )
+   {
+     rect(width/5-100, height/2+50, 425, 60);
+     image(Scavenge, width/2+125, height/2-250, 300, 500);
+     ADefault = Scavenge;
+   }
+   else
+   {
+     image(ADefault, width/2+125, height/2-250, 300, 500);
+   }    
 }
 
 void Aid()                                                                                   //Aid
