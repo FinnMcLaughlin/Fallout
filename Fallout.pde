@@ -270,6 +270,10 @@ void mouseClicked()
    {
       menu_counter = 6;
    }
+   if( (mouseX > 790 && mouseX < 920) && (mouseY > 5 && mouseY < 55) )
+   {
+      menu_counter = 9;
+   }
    if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
    {
       menu_counter = 10;
@@ -304,10 +308,14 @@ void mouseClicked()
     {
       menu_counter = 6;
     }
-     if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
-     {
+    else if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
+    {
         menu_counter = 7;
-     }
+    }
+    if( (mouseX > 790 && mouseX < 920) && (mouseY > 5 && mouseY < 55) )
+    {
+      menu_counter = 9;
+    }
     else if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
     {
       menu_counter = 10;
@@ -332,11 +340,35 @@ void mouseClicked()
      {
        menu_counter = 8;
      }
-     if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
+     if( (mouseX > 790 && mouseX < 920) && (mouseY > 5 && mouseY < 55) )
+     {
+      menu_counter = 9;
+     }
+    if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
      {
        menu_counter = 10;
      }
   }
+//------------------------------------------------------------------------------------------------Map
+  if(menu_counter == 9)
+  {
+    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
+    {
+      menu_counter = 0;
+    }
+    if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
+    {
+      menu_counter = 3;
+    }
+    if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
+    {
+      menu_counter = 7;
+    }
+    if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
+    {
+      menu_counter = 10;
+    }
+  } 
 //------------------------------------------------------------------------------------------------Radio   
   if(menu_counter >= 10)                                                                                    
   {
@@ -351,6 +383,10 @@ void mouseClicked()
     if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
     {
       menu_counter = 7;
+    }
+    if( (mouseX > 790 && mouseX < 920) && (mouseY > 5 && mouseY < 55) )
+    {
+      menu_counter = 9;
     }
     
     if( (mouseX > width/5-140 && mouseX < width/5+120) && (mouseY > height/4 && mouseY < height/4+55) )
