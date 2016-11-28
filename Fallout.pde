@@ -58,6 +58,14 @@ void setup()
   
   ADefault = Raider;
   
+  //Setup Aid
+  Stimpak = loadImage("Stimpak.png");
+  Buffout = loadImage("Buffout.png");
+  Crisps = loadImage("Crisps.png");
+  Radx = loadImage("RadX.png");
+  
+  Aid_Default = Stimpak;
+  
   //Setup Quests
   CurtainCall = loadImage("CurtainCall.png");
   FreedomRoad = loadImage("FreedomRoad.png");
@@ -81,6 +89,7 @@ PImage Locksmith, Default_P, Party, Rifleman, Sneak, Medic;
 PImage Machete, SMG, Shotgun, Minigun, Laser, Default_Weapon;
 PImage QDefault, FreedomRoad, CurtainCall, Institute, Devil;
 PImage ADefault, Raider, Suit, Scavenge, Cowboy;
+PImage Aid_Default, Stimpak, Buffout, Crisps, Radx;
 PImage Map;
 
 int DefaultPosW;
@@ -1083,7 +1092,45 @@ void Aid()                                                                      
    {
      rect(815, 70, 140, 55);
    }
+   
+   textFont(startup_font, 50);
+   fill(40,255,75);
+   text("Stimpak", width/5-100, height/2-125);
+   text("Buffout", width/5-100, height/2-50);
+   text("Potato Crisps", width/5-100, height/2+25);
+   text("RadX", width/5-100, height/2+100);
+   
+   noFill();
+   if( (mouseX > width/5-105 && mouseX < width/5+85) && (mouseY > height/2-175 && mouseY < height/2-115) )
+   {
+     rect(width/5-105, height/2-175, 190, 60);
+     image(Stimpak, width/2+125, height/2-250, 300, 500);
+     Aid_Default = Stimpak;
+   }
+   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2-100 && mouseY < height/2-40) )
+   {
+     rect(width/5-100, height/2-100, 245, 60);
+     image(Buffout, width/2+125, height/2-250, 300, 500);
+     Aid_Default = Buffout;
+   }
+   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2-50 && mouseY < height/2+10) )
+   {
+     rect(width/5-100, height/2-25, 325, 60);
+     image(Crisps, width/2+125, height/2-250, 300, 500);
+     Aid_Default = Crisps;
+   }
+   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2+25 && mouseY < height/2+95) )
+   {
+     rect(width/5-100, height/2+50, 425, 60);
+     image(Radx, width/2+125, height/2-250, 300, 500);
+     Aid_Default = Radx;
+   }
+   else
+   {
+     image(Aid_Default, width/2+125, height/2-250, 300, 500);
+   }    
 }
+
 
 void Misc()
 {
