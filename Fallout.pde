@@ -1107,21 +1107,21 @@ void Aid()                                                                      
      image(Stimpak, width/2+125, height/2-250, 300, 500);
      Aid_Default = Stimpak;
    }
-   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2-100 && mouseY < height/2-40) )
+   else  if( (mouseX > width/5-105 && mouseX < width/5+65) && (mouseY > height/2-100 && mouseY < height/2-40) )
    {
-     rect(width/5-100, height/2-100, 245, 60);
+     rect(width/5-105, height/2-100, 170, 60);
      image(Buffout, width/2+125, height/2-250, 300, 500);
      Aid_Default = Buffout;
    }
-   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2-50 && mouseY < height/2+10) )
+   else  if( (mouseX > width/5-105 && mouseX < width/5+205) && (mouseY > height/2-50 && mouseY < height/2+10) )
    {
-     rect(width/5-100, height/2-25, 325, 60);
+     rect(width/5-105, height/2-25, 310, 60);
      image(Crisps, width/2+125, height/2-250, 300, 500);
      Aid_Default = Crisps;
    }
-   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2+25 && mouseY < height/2+95) )
+   else  if( (mouseX > width/5-105 && mouseX < width/5+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
    {
-     rect(width/5-100, height/2+50, 425, 60);
+     rect(width/5-105, height/2+50, 135, 60);
      image(Radx, width/2+125, height/2-250, 300, 500);
      Aid_Default = Radx;
    }
