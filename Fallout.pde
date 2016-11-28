@@ -58,6 +58,9 @@ void setup()
   
   QDefault = Institute;
   
+  //Setup Map
+  Map = loadImage("map.png");
+  
   Classic = new SoundFile(this, "1812.mp3");
   Atom = new SoundFile(this, "Atom.mp3");
   Static = new SoundFile(this, "Static.wav");
@@ -69,6 +72,7 @@ PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility
 PImage Locksmith, Default_P, Party, Rifleman, Sneak, Medic;
 PImage Machete, SMG, Shotgun, Minigun, Laser, Default_Weapon;
 PImage QDefault, FreedomRoad, CurtainCall, Institute, Devil;
+PImage Map;
 
 int DefaultPosW;
 int DefaultPosH;
@@ -88,8 +92,9 @@ int QDefaultPosW;
 int QDefaultPosH;
 int QDefaultSizeW = 300;
 int QDefaultSizeH = 400;
-String QDefaultString = "Your nimble fingers allow you to pick Advanced locks.";
+String QDefaultString = "Build the teleporter to gain access to the Institute\nBlow up the reactor within the Institute";
 int QCounter = 0;
+boolean line = true;
 
 int radio_counter = 0;
 SoundFile Classic;
@@ -99,7 +104,7 @@ SoundFile Static;
 
 PFont startup_font;
 int counter = 0;
-int menu_counter = 0;
+int menu_counter = 9;
 int stimp_count = 1;
 int i = 0;
 
@@ -214,6 +219,8 @@ void Menu()
     case 6: Misc();
             break;
     case 7: Data();
+            break;
+    case 9: Map();
             break;
     case 10: Radio();
              break;
@@ -1045,11 +1052,11 @@ void Data()
 {
   if(QCounter < 1)
   {
-         QDefault = Institute;
+     QDefault = Institute;
      QDefaultPosW = width/2+50;
      QDefaultPosH = height/4;
-     QDefaultSizeW = 600;
-     QDefaultSizeH = 400;
+     QDefaultSizeW = 500;
+     QDefaultSizeH = 300;
      QCounter = 1;
   }
    MenuIndex();
@@ -1091,52 +1098,119 @@ void Data()
    text("The Devil's Due", width/5-100, height/2+100);
    
    fill(0, 150, 40, 80);
+   textFont(startup_font, 25);
    if( (mouseX > width/5-105 && mouseX < width/5+255) && (mouseY > height/2-170 && mouseY < height/2-110) )
    {
      rect(width/5-105, height/2-170, 355, 55);
-     image(Institute, width/2+50, height/4, 600, 400);
+     image(Institute, width/2+50, height/4, 500, 300);
      QDefault = Institute;
      QDefaultPosW = width/2+50;
      QDefaultPosH = height/4;
-     QDefaultSizeW = 600;
-     QDefaultSizeH = 400;
+     QDefaultSizeW = 500;
+     QDefaultSizeH = 300;
+     QDefaultString = "Build the teleporter to gain access to the Institute\nBlow up the reactor within the Institute";
+     line(width/2+50, height/2+142, width-90, height/2+142);
+     line = true;
+     fill(40,255,75);
+     text(QDefaultString, width/2+50, height/2+150);
    }
    else if( (mouseX > width/5-105 && mouseX < width/5+395) && (mouseY > height/2-95 && mouseY < height/2-40) )
    {
      rect(width/5-105, height/2-95, 500, 55);
-     image(FreedomRoad, width/2+50, height/4, 600, 400);
+     image(FreedomRoad, width/2+50, height/4, 500, 300);
      QDefault = FreedomRoad;
      QDefaultPosW = width/2+50;
      QDefaultPosH = height/4;
-     QDefaultSizeW = 600;
-     QDefaultSizeH = 400;
+     QDefaultSizeW = 500;
+     QDefaultSizeH = 300;
+     QDefaultString = "Follow the clues to find 'The RailRoad'";
+     fill(40,255,75);
+     text(QDefaultString, width/2+50, height/2+150);
+     line = false;
    }
    else if( (mouseX > width/5-105 && mouseX < width/5+165) && (mouseY > height/2-20 && mouseY < height/2+35) )
    {
      rect(width/5-105, height/2-20, 270, 55);
-     image(CurtainCall, width/2+50, height/4, 600, 400);
+     image(CurtainCall, width/2+50, height/4, 500, 300);
      QDefault = CurtainCall;
      QDefaultPosW = width/2+50;
      QDefaultPosH = height/4;
-     QDefaultSizeW = 600;
-     QDefaultSizeH = 400;
+     QDefaultSizeW = 500;
+     QDefaultSizeH = 300;     
+     QDefaultString = "Investigate the Trinity Tower Radio broadcast";
+     fill(40,255,75);
+     text(QDefaultString, width/2+50, height/2+150);
+     line = false;
    }
    else if( (mouseX > width/5-105 && mouseX < width/5+255) && (mouseY > height/2+55 && mouseY < height/2+110) )
    {
      rect(width/5-105, height/2+55, 360, 55);
-     image(Devil, width/2-100, height/4-100, 800, 600);
+     image(Devil, width/2-100, height/4-100, 700, 400);
      QDefault = Devil;
      QDefaultPosW = width/2-100;
      QDefaultPosH = height/4-100;
-     QDefaultSizeW = 800;
-     QDefaultSizeH = 600;
+     QDefaultSizeW = 700;
+     QDefaultSizeH = 400;
+     QDefaultString = "Investigate the disturbance in the church";
+     fill(40,255,75);
+     text(QDefaultString, width/2+50, height/2+150);
+     line = false;
    }
    else
    {
-     image(QDefault, QDefaultPosW, QDefaultPosH, QDefaultSizeW, QDefaultSizeH); 
+     image(QDefault, QDefaultPosW, QDefaultPosH, QDefaultSizeW, QDefaultSizeH);
+     textFont(startup_font, 25);
+     fill(40,255,75);
+     text(QDefaultString, width/2+50, height/2+150);
+     
+     if(line == true)
+     {
+       line(width/2+50, height/2+142, width-90, height/2+142);
+     }
    }
 }
 
+void Map()
+{
+  MenuIndex();
+  
+  //Menu Index Border
+   stroke(40, 255, 75);
+   line(15, 60, 15, 90);//Left Side
+   line(15, 60, width/2+90, 60);
+   line(width/2+90, 60, width/2+90, 30);
+   line(width/2+90, 30, width/2+100, 30);
+   
+   line(width/2+250, 30, width/2+240, 30);//Right Side
+   line(width/2+250, 30, width/2+250, 60);
+   line(width/2+250, 60, width-15, 60);
+   line(width-15, 60, width-15, 90);
+
+   image(Map, 85, 100, 1200, 650);
+   
+   textFont(startup_font, 20);
+   noFill();
+   if((mouseX > width/2+5 && mouseX < width/2+75) && (mouseY > height/2-15 && mouseY < height/2+35))
+   {
+     text("House", width/2+10, height/2+50);
+   }
+   if((mouseX > width/2-100 && mouseX < width/2-5) && (mouseY > height/2-170 && mouseY < height/2-100))
+   {
+     text("Church", width/2-85, height/2-80);
+   }
+   if((mouseX > width/4-200 && mouseX < width/4-105) && (mouseY > height/2+230 && mouseY < height/2+300))
+   {
+     text("Swamp", width/4-185, height/2+320);
+   }
+   if((mouseX > width/4+90 && mouseX < width/4+185) && (mouseY > height/2+60 && mouseY < height/2+130))
+   {
+     text("Office", width/4+110, height/2+150);
+   }   
+   if((mouseX > width/2-97 && mouseX < width/2-55) && (mouseY > height/2+60 && mouseY < height/2+95))
+   {
+     text("You", width/2-95, height/2+110);
+   }
+}
 void Radio()
 {
   MenuIndex();
