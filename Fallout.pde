@@ -126,6 +126,9 @@ int QCounter = 0;
 boolean line = true;
 
 String Aid_S_Default = "Heals 80 points of health";
+String MDefaultString = "\"If anyone finds this, I am making my way North in an attempt\nto overthrow the Institute, I will make my assault in 4 days. If\nyou have any interest in taking them down, find me \"";
+
+
 int radio_counter = 0;
 SoundFile Classic;
 SoundFile Atom;
@@ -134,7 +137,7 @@ SoundFile Static;
 Menu Menu;
 PFont startup_font;
 int counter = 0;
-int menu_counter = 8;
+int menu_counter = 2;
 int stimp_count = 1;
 int i = 0;
 
@@ -256,177 +259,6 @@ void Menu()
             break;
     case 10: Radio();
              break;
-  }
-}
-
-void mouseClicked()
-{                                                                                                 
-//-------------------------------------------------------------------------------------------------Status
-  if( menu_counter >= 0 && menu_counter < 3)
-  {
-   if( (mouseX > 150 && mouseX < 350) && (mouseY > 50 && mouseY < 150) )
-   {
-     menu_counter = 0;
-   }
-   if( (mouseX > 365 && mouseX < 515) && (mouseY > 50 && mouseY < 150) )
-   {
-     menu_counter = 1;
-   }
-   if( (mouseX > 600 && mouseX < 800) && (mouseY > 50 && mouseY < 150) )
-   {
-     menu_counter = 2;
-   }
-   if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
-   {
-     menu_counter = 3;
-   }
-   if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
-   {
-      menu_counter = 6;
-   }
-   if( (mouseX > 790 && mouseX < 920) && (mouseY > 5 && mouseY < 55) )
-   {
-      menu_counter = 9;
-   }
-   if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
-   {
-      menu_counter = 10;
-   }
-  }
-  
-  if( (mouseX > 15 && mouseX < 215) && (mouseY > height-130 && mouseY < height-80) )
-  {
-    stimp_count = 0; 
-  }
-  
-//-------------------------------------------------------------------------------------------Inventory  
-  if( menu_counter >= 3 && menu_counter < 7 )
-  {
-    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
-    {
-      menu_counter = 0;
-    }
-    else if( (mouseX > 145 && mouseX < 400) && (mouseY > 70 && mouseY < 125) )
-    {
-      menu_counter = 3;
-    }
-    else if( (mouseX > 435 && mouseX < 670) && (mouseY > 70 && mouseY < 125) )
-    {
-      menu_counter = 4;
-    }
-    else if( (mouseX >  690 && mouseX < 790) && (mouseY > 70 && mouseY < 125) )
-    {
-      menu_counter = 5;
-    }
-    else if( (mouseX > 815 && mouseX < 950) && (mouseY > 70 && mouseY < 125) )
-    {
-      menu_counter = 6;
-    }
-    else if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
-    {
-        menu_counter = 7;
-    }
-    if( (mouseX > 790 && mouseX < 920) && (mouseY > 5 && mouseY < 55) )
-    {
-      menu_counter = 9;
-    }
-    else if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
-    {
-      menu_counter = 10;
-    }
-  }
-//---------------------------------------------------------------------------------------------Data  
-  if(menu_counter >= 7 && menu_counter <= 8)
-  {
-    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
-     {
-        menu_counter = 0;
-     }
-    if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
-     {
-       menu_counter = 3;
-     }
-     if( (mouseX > 420 && mouseX < 635) && (mouseY > 70 && mouseY < 125) )
-     {
-       menu_counter = 7;
-     }
-     if( (mouseX > 670 && mouseX < 830) && (mouseY > 70 && mouseY < 125) )
-     {
-       menu_counter = 8;
-     }
-     if( (mouseX > 790 && mouseX < 920) && (mouseY > 5 && mouseY < 55) )
-     {
-      menu_counter = 9;
-     }
-    if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
-     {
-       menu_counter = 10;
-     }
-  }
-//------------------------------------------------------------------------------------------------Map
-  if(menu_counter == 9)
-  {
-    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
-    {
-      menu_counter = 0;
-    }
-    if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
-    {
-      menu_counter = 3;
-    }
-    if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
-    {
-      menu_counter = 7;
-    }
-    if( (mouseX > 990 && mouseX < 1100) && (mouseY > 5 && mouseY < 40) )
-    {
-      menu_counter = 10;
-    }
-  } 
-//------------------------------------------------------------------------------------------------Radio   
-  if(menu_counter >= 10)                                                                                    
-  {
-    if( (mouseX > 180  && mouseX < 325) && (mouseY > 5 && mouseY < 40) )
-    {
-      menu_counter = 0;
-    }
-    if( (mouseX > 390 && mouseX < 490) && (mouseY > 5 && mouseY < 40) )
-    {
-      menu_counter = 3;
-    }
-    if( (mouseX > 565 && mouseX < 715) && (mouseY > 5 && mouseY < 40) )
-    {
-      menu_counter = 7;
-    }
-    if( (mouseX > 790 && mouseX < 920) && (mouseY > 5 && mouseY < 55) )
-    {
-      menu_counter = 9;
-    }
-    
-    if( (mouseX > width/5-140 && mouseX < width/5+120) && (mouseY > height/4 && mouseY < height/4+55) )
-    {
-      radio_counter = 1;
-      Classic.cue(300);
-      Classic.loop();
-      Atom.stop();
-      Static.stop();
-    }
-    else if(  (mouseX > width/5-140 && mouseX < width/5+230) && (mouseY > height/4+75 && mouseY < height/4+130) )
-    {
-      radio_counter = 2;
-      Atom.cue(5);
-      Atom.loop();
-      Classic.stop();
-      Static.stop();
-    }
-    else if(  (mouseX > width/5-140 && mouseX < width/5+315) && (mouseY > height/4+150 && mouseY < height/4+205) )
-    {
-      radio_counter = 3;
-      Static.cue(20);
-      Static.loop();
-      Atom.stop();
-      Classic.stop();
-    }
   }
 }
 
@@ -792,9 +624,9 @@ void Perks()                                                                    
    
    textFont(startup_font, 20);
    fill(0, 150, 40, 80);
-   if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 230 && mouseY < height/2 - 170) )
+   if( (mouseX > width/2-365 && mouseX < width/2-130) && (mouseY > height/2 - 230 && mouseY < height/2 - 170) )
    {
-     rect(width/2-365, height/2-225, 290, 60);
+     rect(width/2-365, height/2-225, 235, 60);
      image(Locksmith, width/2+100, height/2-250, 300, 400);
      fill(40,255,75);
      text("Your nimble fingers allow you to pick Advanced locks.", width-575, height-180);
@@ -805,9 +637,9 @@ void Perks()                                                                    
      PDefaultSizeH = 400;
      PDefaultString = "Your nimble fingers allow you to pick Advanced locks.";
    }
-   else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 160 && mouseY < height/2 - 100) )
+   else if( (mouseX > width/2-365 && mouseX < width/2-160) && (mouseY > height/2 - 160 && mouseY < height/2 - 100) )
    {
-     rect(width/2-365, height/2-155, 290, 60);
+     rect(width/2-365, height/2-155, 205, 60);
      image(Rifleman, width/2+50, height/2-300, 400, 450);
      fill(40,255,75);
      text("Keep your distance long and your kill-count high.\nAttacks with non-automatic rifles do 20% more damage.", width-575, height-180);
@@ -831,9 +663,9 @@ void Perks()                                                                    
      PDefaultSizeH = 350;
      PDefaultString = "Nobody has a good time like you! There's no chance\nyou'll get addicted to alcohol.";
    }
-   else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 20 && mouseY < height/2 + 60) )
+   else if( (mouseX > width/2-365 && mouseX < width/2-220) && (mouseY > height/2 - 20 && mouseY < height/2 + 60) )
    {   
-     rect(width/2-365, height/2+5, 290, 60);
+     rect(width/2-365, height/2+5, 145, 60);
      image(Medic, width/2+200, height/2-200, 250, 350);
      fill(40,255,75);
      text("Stimpaks now restore 60% of lost Health, and RadAway\nremoves 60% of radiation.", width-575, height-180);
@@ -844,9 +676,9 @@ void Perks()                                                                    
      PDefaultSizeH = 350;
      PDefaultString = "Stimpaks now restore 60% of lost Health, and RadAway\nremoves 60% of radiation.";
    }
-   else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 + 50 && mouseY < height/2 + 130) )
+   else if( (mouseX > width/2-365 && mouseX < width/2-210) && (mouseY > height/2 + 50 && mouseY < height/2 + 130) )
    {   
-     rect(width/2-365, height/2+80, 290, 60);
+     rect(width/2-365, height/2+80, 155, 60);
      image(Sneak, width/2+200, height/2-200, 250, 350);
      fill(40,255,75);
      text("Become whisper, become shadow. You are 20% harder\nto detect while sneaking.", width-575, height-180);
@@ -1228,39 +1060,57 @@ void Misc()
    text("Processor", width/4-100, height/2+175);
 
    fill(0, 150, 40, 80);
+   textFont(startup_font, 20);
    if( (mouseX > width/4-105 && mouseX < width/4+15) && (mouseY > height/2-175 && mouseY < height/2-115) )
    {
      rect(width/4-105, height/2-175, 120, 60);
-     image(Note, width/2, height/2-150, 300, 300);
+     image(Note, width/2, height/2-200, 300, 300);
+     fill(40,255,75);
+     text("\"If anyone finds this, I am making my way North in an attempt\nto overthrow the Institute, I will make my assault in 4 days. If\nyou have any interest in taking them down, find me \"", width/2, height/2+150); 
      MDefault = Note;
+     MDefaultString = "\"If anyone finds this, I am making my way North in an attempt\nto overthrow the Institute, I will make my assault in 4 days. If\nyou have any interest in taking them down, find me \""; 
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+95) && (mouseY > height/2-100 && mouseY < height/2-40) )
    {
      rect(width/4-105, height/2-100, 200, 60);
-     image(Disk, width/2, height/2-150, 300, 300);
+     image(Disk, width/2, height/2-200, 300, 300);
+     fill(40,255,75);
+     text("A holodisk from your son", width/2, height/2+150);
      MDefault = Disk;
+     MDefaultString = "A holodisk from your son";
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+90) && (mouseY > height/2-50 && mouseY < height/2+10) )
    {
      rect(width/4-105, height/2-25, 195, 60);
-     image(Keycard, width/2, height/2-150, 300, 300);
+     image(Keycard, width/2, height/2-200, 300, 300);
+     fill(40,255,75);
+     text("Will grant you access to Trinity Tower", width/2, height/2+150);
      MDefault = Keycard;
+     MDefaultString = "Will grant you access to Trinity Tower";
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
    {
      rect(width/4-105, height/2+50, 80, 60);
-     image(Jar, width/2, height/2-150, 300, 300);
+     image(Jar, width/2, height/2-200, 300, 300);
+     fill(40,255,75);
+     text("A jar of suspicous green liquid", width/2, height/2+150);
      MDefault = Jar;
+     MDefaultString = "A jar of suspicous green liquid";
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+135) && (mouseY > height/2+125 && mouseY < height/2+165) )
    {
      rect(width/4-105, height/2+125, 240, 60);
-     image(Processor, width/2, height/2-150, 300, 300);
+     image(Processor, width/2, height/2-200, 300, 300);
+     fill(40,255,75);
+     text("A standard computer processor. Use it to fix broken terminals and robots", width/2, height/2+150);
      MDefault = Processor;
+     MDefaultString = "A standard computer processor. Use it to fix broken terminals and robots";
    }
    else
    {
-     image(MDefault, width/2, height/2-150, 300, 300);
+     image(MDefault, width/2, height/2-200, 300, 300);
+     fill(40,255,75);
+     text(MDefaultString, width/2, height/2+150);
    }
    
    //Info at the bottom of the screen
@@ -1504,7 +1354,7 @@ void Radio()
    text("Diamond City Radio", width/4-200, height/2-75);
    text("Military Frequency FM90", width/4-200, height/2);
    
-   noFill();
+   fill(0, 150, 40, 80);
    if( (mouseX > width/5-140 && mouseX < width/5+120) && (mouseY > height/4 && mouseY < height/4+55) )
    {
      rect(width/5-140, height/4, 260, 55);
@@ -1522,6 +1372,7 @@ void Radio()
    line(width-200, height/3-100, width-200, height/3+300);
    line(width-700, height/3+300, width-200, height/3+300);
    
+   fill(40,255,75);
    if(radio_counter == 0)
    {
      for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
@@ -1539,6 +1390,9 @@ void Radio()
        float y = sin(x+frameCount*0.12);   // Render wave using ellipse.
        ellipse(x*21,height/2.25+y*60,5, 5);
      }  
+           
+     rect(width/5-160, height/4+20, 15, 15);
+
    }
    else if(radio_counter == 2)
    {
@@ -1548,6 +1402,9 @@ void Radio()
        float y = sin(x+frameCount*0.2);   // Render wave using ellipse.
        ellipse(x*21,height/2.25+y*30,5, 5);
      }   
+     
+      rect(width/5-160, height/4+95, 15, 15);
+          
    }
    else if(radio_counter == 3)
    {
@@ -1557,5 +1414,8 @@ void Radio()
        float y = sin(x+frameCount*0.4);   // Render wave using ellipse.
        ellipse(x*21,height/2.25+y*100,5, 5);
      }
+     
+       rect(width/5-160, height/4+170, 15, 15);
+           
    }
 }
