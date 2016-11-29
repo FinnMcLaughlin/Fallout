@@ -1123,33 +1123,38 @@ void Aid()                                                                      
    text("RadX", width/4-100, height/2+100);
    
    noFill();
+   textFont(startup_font, 20);
    if( (mouseX > width/4-105 && mouseX < width/4+85) && (mouseY > height/2-175 && mouseY < height/2-115) )
    {
      rect(width/4-105, height/2-175, 190, 60);
-     image(Stimpak, width/2+125, height/2-250, 300, 500);
+     image(Stimpak, width/2+125, height/2-250, 300, 400);
+     text("Heals 80 points of health", width/2+125, height/2+150);
      Aid_Default = Stimpak;
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+65) && (mouseY > height/2-100 && mouseY < height/2-40) )
    {
      rect(width/4-105, height/2-100, 170, 60);
-     image(Buffout, width/2+125, height/2-250, 300, 500);
+     image(Buffout, width/2+125, height/2-250, 300, 400);
+     text("Heals 50 points of health, and +3 to\nStrength temporarily", width/2+125, height/2+150);
      Aid_Default = Buffout;
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+205) && (mouseY > height/2-50 && mouseY < height/2+10) )
    {
      rect(width/4-105, height/2-25, 310, 60);
-     image(Crisps, width/2+125, height/2-250, 300, 500);
+     image(Crisps, width/2+125, height/2-250, 300, 400);
+     text("Heals 20 points of health, and +7 Rads\nper second", width/2+125, height/2+150);
      Aid_Default = Crisps;
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
    {
      rect(width/4-105, height/2+50, 135, 60);
-     image(Radx, width/2+125, height/2-250, 300, 500);
+     image(Radx, width/2+125, height/2-250, 300, 400);
+     text("Gives +30% extra rad resistance\nfor 90 seconds", width/2+125, height/2+150);
      Aid_Default = Radx;
    }
    else
    {
-     image(Aid_Default, width/2+125, height/2-250, 300, 500);
+     image(Aid_Default, width/2+125, height/2-250, 300, 400);
    }
    
    //Info at the bottom of the screen
