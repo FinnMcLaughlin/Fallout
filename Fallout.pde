@@ -11,6 +11,7 @@ void setup()
     line(0, i, width, i);
   }
   
+  Menu = new Menu();
 
   //Set Up for Start Up Screen
   Start_Up1=loadImage("StartingUp.png");
@@ -129,7 +130,7 @@ SoundFile Classic;
 SoundFile Atom;
 SoundFile Static;
 
-
+Menu Menu;
 PFont startup_font;
 int counter = 0;
 int menu_counter = 4;
@@ -253,24 +254,6 @@ void Menu()
     case 10: Radio();
              break;
   }
-}
-
-void MenuIndex()
-{
-  background(0,51,20,40);
-  for(int i=0; i < height; i+=10)
-  {
-    stroke(0,50);
-    line(0, i, width, i);
-  }
-   //Menu Index
-   fill(40,255,75);
-   textFont(startup_font, 60);
-   text("STAT", 180, 50);
-   text("INV", 390, 50);
-   text("DATA", 565, 50);
-   text("MAP", 790, 50);
-   text("RADIO", 990, 50);
 }
 
 void mouseClicked()
@@ -446,7 +429,7 @@ void mouseClicked()
 
 void Status()                                                                                               //Status
 {
-   MenuIndex();
+   Menu.Index();
    
    //Menu Index Border
    stroke(40, 255, 75);
@@ -546,7 +529,7 @@ void Special()                                                                  
     Special_counter = 1;  
   }
   
-   MenuIndex();
+   Menu.Index();
    
    //Menu Index Border
    stroke(40, 255, 75);
@@ -736,7 +719,7 @@ void Perks()                                                                    
     Perk_counter = 1;  
   }
   
-   MenuIndex();
+   Menu.Index();
    
    //Menu Index Border
    stroke(40, 255, 75);
@@ -873,7 +856,7 @@ void Perks()                                                                    
 
 void Weapons()                                                                   //Weapons
 {
-   MenuIndex(); 
+   Menu.Index(); 
  
   //Menu Index Border
    stroke(40, 255, 75);
@@ -976,7 +959,7 @@ void Weapons()                                                                  
 
 void Apparel()                                                                             //Apparel
 {
-   MenuIndex(); 
+   Menu.Index(); 
  
   //Menu Index Border
    stroke(40, 255, 75);
@@ -1072,7 +1055,7 @@ void Apparel()                                                                  
 
 void Aid()                                                                                   //Aid
 {
-   MenuIndex(); 
+   Menu.Index(); 
  
   //Menu Index Border
    stroke(40, 255, 75);
@@ -1168,7 +1151,7 @@ void Aid()                                                                      
 
 void Misc()
 {
-   MenuIndex(); 
+   Menu.Index(); 
  
   //Menu Index Border
    stroke(40, 255, 75);
@@ -1279,7 +1262,7 @@ void Data()
      QDefaultSizeH = 300;
      QCounter = 1;
   }
-   MenuIndex();
+   Menu.Index();
   
    //Menu Index Border
    stroke(40, 255, 75);
@@ -1392,7 +1375,7 @@ void Data()
 
 void Map()
 {
-  MenuIndex();
+  Menu.Index();
   
   //Menu Index Border
    stroke(40, 255, 75);
@@ -1434,7 +1417,7 @@ void Map()
 }
 void Radio()
 {
-  MenuIndex();
+  Menu.Index();
   
    //Menu Index Border
    stroke(40, 255, 75);
