@@ -133,7 +133,7 @@ SoundFile Static;
 Menu Menu;
 PFont startup_font;
 int counter = 0;
-int menu_counter = 4;
+int menu_counter = 6;
 int stimp_count = 1;
 int i = 0;
 
@@ -248,6 +248,8 @@ void Menu()
     case 6: Misc();
             break;
     case 7: Data();
+            break;
+    case 8: Stats();
             break;
     case 9: Map();
             break;
@@ -485,7 +487,7 @@ void Status()                                                                   
    //Limbs
    fill(40,255,75);
    rect(width/2-50, height/2-225, 100, 20);//Head
-   rect(width/2-220, height/2-50, 100, 20);//Left Arm
+   rect(width/2-240, height/2-50, 100, 20);//Left Arm
    noFill();
    rect(width/2+100, height/2, 100, 20);//Right Arm
    fill(40,255,75);
@@ -505,14 +507,14 @@ void Status()                                                                   
      text("STIMPAX (0)", 30, height-95);
      fill(40,255,75);
      rect(width/2+100, height/2, 100, 20);
-     image(Healthy, width/2-150, height/2-200, 275, 350);
+     image(Healthy, width/2-145, height/2-200, 275, 350);
      textFont(startup_font, 40);
      text("HP 135/135", 20, height-20);
    }
    else
    {
      text("STIMPAX (1)", 30, height-95);
-     image(Cripple, width/2-150, height/2-200, 275, 350);
+     image(Cripple, width/2-145, height/2-200, 275, 350);
      textFont(startup_font, 40);
      text("HP 75/135", 20, height-20);
    }
@@ -573,7 +575,14 @@ void Special()                                                                  
 
    fill(40,255,75);
    textFont(startup_font, 40);
-   text("HP 75/135", 20, height-20);
+   if(stimp_count < 1)
+   {
+     text("HP 135/135", 20, height-20);
+   }
+   else
+   {
+     text("HP 75/135", 20, height-20);
+   }
    text("Level 13", 325, height-20);
    stroke(40,255,75);
    noFill();
@@ -581,6 +590,7 @@ void Special()                                                                  
    fill(40,255,75);
    rect(490,height-45, 50, 20);
    text("AP 50/120", width-205, height-20);
+   
    //S.P.E.C.I.A.L
    textFont(startup_font, 50);
    text("Strength", 250, 200);
@@ -762,7 +772,14 @@ void Perks()                                                                    
 
    fill(40,255,75);
    textFont(startup_font, 40);
-   text("HP 75/135", 20, height-20);
+   if(stimp_count < 1)
+   {
+     text("HP 135/135", 20, height-20);
+   }
+   else
+   {
+     text("HP 75/135", 20, height-20);
+   }
    text("Level 13", 325, height-20);
    stroke(40,255,75);
    noFill();
@@ -1203,33 +1220,33 @@ void Misc()
    text("Processor", width/4-100, height/2+175);
 
    noFill();
-   if( (mouseX > width/4-105 && mouseX < width/4+85) && (mouseY > height/2-175 && mouseY < height/2-115) )
+   if( (mouseX > width/4-105 && mouseX < width/4+15) && (mouseY > height/2-175 && mouseY < height/2-115) )
    {
-     rect(width/4-105, height/2-175, 190, 60);
+     rect(width/4-105, height/2-175, 120, 60);
      image(Note, width/2, height/2-150, 300, 300);
      MDefault = Note;
    }
-   else  if( (mouseX > width/4-105 && mouseX < width/4+65) && (mouseY > height/2-100 && mouseY < height/2-40) )
+   else  if( (mouseX > width/4-105 && mouseX < width/4+95) && (mouseY > height/2-100 && mouseY < height/2-40) )
    {
-     rect(width/4-105, height/2-100, 170, 60);
+     rect(width/4-105, height/2-100, 200, 60);
      image(Disk, width/2, height/2-150, 300, 300);
      MDefault = Disk;
    }
-   else  if( (mouseX > width/4-105 && mouseX < width/4+205) && (mouseY > height/2-50 && mouseY < height/2+10) )
+   else  if( (mouseX > width/4-105 && mouseX < width/4+90) && (mouseY > height/2-50 && mouseY < height/2+10) )
    {
-     rect(width/4-105, height/2-25, 310, 60);
+     rect(width/4-105, height/2-25, 195, 60);
      image(Keycard, width/2, height/2-150, 300, 300);
      MDefault = Keycard;
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
    {
-     rect(width/4-105, height/2+50, 135, 60);
+     rect(width/4-105, height/2+50, 80, 60);
      image(Jar, width/2, height/2-150, 300, 300);
      MDefault = Jar;
    }
-   else  if( (mouseX > width/4-105 && mouseX < width/4+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
+   else  if( (mouseX > width/4-105 && mouseX < width/4+135) && (mouseY > height/2+125 && mouseY < height/2+165) )
    {
-     rect(width/4-105, height/2+50, 135, 60);
+     rect(width/4-105, height/2+125, 240, 60);
      image(Processor, width/2, height/2-150, 300, 300);
      MDefault = Processor;
    }
@@ -1370,6 +1387,40 @@ void Data()
      {
        line(width/2+50, height/2+142, width-90, height/2+142);
      }
+   }
+}
+
+void Stats()
+{
+  Menu.Index(); 
+  
+  //Menu Index Border
+   stroke(40, 255, 75);
+   line(15, 60, 15, 90);//Left Side
+   line(15, 60, 550, 60);
+   line(550, 60, 550, 30);
+   line(550, 30, 560, 30);
+   
+   line(730, 30, 720, 30);//Right Side
+   line(730, 30, 730, 60);
+   line(730, 60, width-15, 60);
+   line(width-15, 60, width-15, 90);  
+   
+   //Sub Index
+   textFont(startup_font, 50);
+   fill(40,255,75,80);
+   text("QUESTS", 425, 115);
+   fill(40,255,75,200);
+   text("STATS", 675, 115);
+   
+   fill(0, 150, 40, 80);
+   if( (mouseX > 420 && mouseX < 635) && (mouseY > 70 && mouseY < 125) )
+   {
+     rect(420, 70, 215, 55);
+   }
+   if( (mouseX > 670 && mouseX < 830) && (mouseY > 70 && mouseY < 125) )
+   {
+     rect(670, 70, 160, 55);
    }
 }
 
