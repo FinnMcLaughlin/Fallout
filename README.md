@@ -28,4 +28,4 @@ The Map tab shows a map of the world the player is in. Points of interest that t
 The Radio tab gives the player an option of stations to play music on while they play the game. The tab features 3 radio stations, "Classic Radio", "Diamond City", and "Military Radio Station". When clicking on the selected station the radio waves begin to play as well as the music file. Music can be shut off by pressing on the station again.
 
 
-
+[![Video](http://img.youtube.com/vi/ikylKEum6cQ/0.jpg)](https://www.youtube.com/watch?v=ikylKEum6cQ)
