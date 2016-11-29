@@ -95,28 +95,29 @@ void setup()
 PImage Start_Up1, Start_Up2;//Images for Start Up
 PImage Cripple, Healthy;//Images for Menu_Status
 PImage Default, Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck;//Images for Special
-PImage Locksmith, Default_P, Party, Rifleman, Sneak, Medic;
-PImage Machete, SMG, Shotgun, Minigun, Laser, Default_Weapon;
-PImage QDefault, FreedomRoad, CurtainCall, Institute, Devil;
-PImage ADefault, Raider, Suit, Scavenge, Cowboy;
-PImage Aid_Default, Stimpak, Buffout, Crisps, Radx;
-PImage MDefault, Note, Disk, Keycard, Jar, Processor;
-PImage Map;
+PImage Locksmith, Default_P, Party, Rifleman, Sneak, Medic;//Images for Perks
+PImage Machete, SMG, Shotgun, Minigun, Laser, Default_Weapon;//Images for Weapons
+PImage QDefault, FreedomRoad, CurtainCall, Institute, Devil;//Images for Quests
+PImage ADefault, Raider, Suit, Scavenge, Cowboy;//Images for Clothes
+PImage Aid_Default, Stimpak, Buffout, Crisps, Radx;//Images for Aid
+PImage MDefault, Note, Disk, Keycard, Jar, Processor;//Images for Misc
+PImage Map;//Images for Map
 
+//Defaults for SPECIAL
 int DefaultPosW;
 int DefaultPosH;
 int DefaultSizeW = 350;
 int DefaultSizeH = 450;
 String DefaultString = "Strength slightly increases melee damage and carrying capacity.\nMelee damage is at 1 damage for every 2 Strength (+5 damage at 10)\nand carrying capacity is an added 10 lbs for every\npoint (+100 lbs at 10 strength)";
 int rect_i , rect_j, Special_counter = 0;
-
+//Default for Perks
 int PDefaultPosW;
 int PDefaultPosH;
 int PDefaultSizeW = 300;
 int PDefaultSizeH = 400;
 String PDefaultString = "Your nimble fingers allow you to pick Advanced locks.";
 int P_rect_i , P_rect_j, Perk_counter = 0;
-
+//Default Quests
 int QDefaultPosW;
 int QDefaultPosH;
 int QDefaultSizeW = 300;
@@ -137,13 +138,13 @@ SoundFile Static;
 Menu Menu;
 PFont startup_font;
 int counter = 0;
-int menu_counter = 2;
+int menu_counter = 0;
 int stimp_count = 1;
 int i = 0;
 
 void draw()
 {
-  /*if(frameCount < 300)//Load Start Up
+  if(frameCount < 300)//Load Start Up
   {
     i = StartUp(i);
   }
@@ -152,9 +153,9 @@ void draw()
     FinishStartUp();
   }
   else if(counter > 150)//Load Menu
-  {*/
+  {
     Menu();
-  //}
+  }
 }
 
 
@@ -1387,7 +1388,7 @@ void Radio()
      for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
      {
        // Calculate value
-       float y = sin(x+frameCount*0.12);   // Render wave using ellipse.
+       float y = sin(x+frameCount*0.12);   //Radio Waves
        ellipse(x*21,height/2.25+y*60,5, 5);
      }  
            
@@ -1399,7 +1400,7 @@ void Radio()
      for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
      {
        // Calculate value
-       float y = sin(x+frameCount*0.2);   // Render wave using ellipse.
+       float y = sin(x+frameCount*0.2);   
        ellipse(x*21,height/2.25+y*30,5, 5);
      }   
      
@@ -1411,7 +1412,7 @@ void Radio()
      for (float x = 32; x < 8.75*TWO_PI; x+=0.02) 
      {
        // Calculate value
-       float y = sin(x+frameCount*0.4);   // Render wave using ellipse.
+       float y = sin(x+frameCount*0.4);   
        ellipse(x*21,height/2.25+y*100,5, 5);
      }
      
