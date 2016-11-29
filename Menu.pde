@@ -2,7 +2,10 @@ class Menu
 {
   Menu()
   {
-    Index();
+    if(menu_counter > 150)
+    {
+      Index();
+    }
   }
   
   void Index()

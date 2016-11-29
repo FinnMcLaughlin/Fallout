@@ -134,7 +134,7 @@ SoundFile Static;
 Menu Menu;
 PFont startup_font;
 int counter = 0;
-int menu_counter = 6;
+int menu_counter = 0;
 int stimp_count = 1;
 int i = 0;
 
@@ -612,7 +612,7 @@ void Special()                                                                  
    noFill();
    
    textFont(startup_font, 20);
-   
+   fill(0, 150, 40, 80);
    if( (mouseX > 245 && mouseX < 645) && (mouseY > 150 && mouseY < 210) )
    {
      image(Strength, width/2+150, height/2-275, 350, 450);
@@ -621,10 +621,9 @@ void Special()                                                                  
      DefaultPosH  = height/2-275;
      DefaultSizeW = 350;
      DefaultSizeH = 450;
-     rect_i = width/2-438;
-     rect_j = height/2-234;
-     rect(rect_i, rect_j,400,60);
+     rect(width/2-438, height/2-234,400,60);
      DefaultString = "Strength slightly increases melee damage and carrying capacity.\nMelee damage is at 1 damage for every 2 Strength (+5 damage at 10)\nand carrying capacity is an added 10 lbs for every\npoint (+100 lbs at 10 strength)";
+     fill(40,255,75);
      text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 215 && mouseY < 275) )
@@ -635,10 +634,9 @@ void Special()                                                                  
      DefaultPosH  = height/2-280;
      DefaultSizeW = 375;
      DefaultSizeH = 475;
-     rect_i = width/2-438;
-     rect_j = height/2-160;
-     rect(rect_i, rect_j,400,60);
+     rect(width/2-438, height/2-160,400,60);
      DefaultString = "Perception determines how far away enemies can be detected on the\ncompass (enemies show as red bars). When playing with a high\nPerception, it is possible to sense the enemies even before they come\ninto view.";
+     fill(40,255,75);
      text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 280 && mouseY < 340) )
@@ -649,10 +647,9 @@ void Special()                                                                  
      DefaultPosH  = height/2-280;
      DefaultSizeW = 450;
      DefaultSizeH = 450;
-     rect_i = width/2-438;
-     rect_j = height/2-80;
-     rect(rect_i, rect_j,400,60);
+     rect(width/2-438, height/2-80,400,60);
      DefaultString = "Endurance determines a character's environmental resistances (poison,\nradiation), Hit Points, and Healing Rate, as well as the starting levels of\nthe Unarmed and Survival skills. It also determines the number of\nimplants allowed.";
+     fill(40,255,75);
      text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 360 && mouseY < 420) )
@@ -663,10 +660,9 @@ void Special()                                                                  
      DefaultPosH = height/2 - 230;
      DefaultSizeW = 255;
      DefaultSizeH = 405;
-     rect_i = width/2-438;
-     rect_j = height/2-5;
-     rect(rect_i, rect_j,400,60);
+     rect(width/2-438, height/2-5,400,60);
      DefaultString = "Charisma increases the disposition of all NPCs, which makes Speech\nchecks easier. Disposition is also affected somewhat by Karma, quests,\nand dialog options. Charisma also affects the Barter and Speech skills.";
+     fill(40,255,75);
      text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 430 && mouseY < 485) )
@@ -677,10 +673,9 @@ void Special()                                                                  
      DefaultPosH = height/2 - 230;
      DefaultSizeW = 400;
      DefaultSizeH = 400;
-     rect_i = width/2-438;
-     rect_j = height/2+70;
-     rect(rect_i, rect_j,400,60);
+     rect(width/2-438, height/2+70,400,60);
      DefaultString = "Intelligence determines the number of skill points earned per level up.\nThe base number of skill points gained per level is 10 + INT. Skill points\ngained for raised Intelligence are not retroactive for past levels, so\nincreasing this primary stat early, if at all, is the best.";
+     fill(40,255,75);
      text(DefaultString, width/2+30, height/2+200);
    }
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 510 && mouseY < 570) )
@@ -691,10 +686,9 @@ void Special()                                                                  
      DefaultPosH = height/2 - 230;
      DefaultSizeW = 400;
      DefaultSizeH = 400;
-     rect_i = width/2-438;
-     rect_j = height/2+145;
-     rect(rect_i, rect_j,400,60);
+     rect(width/2-438, height/2+145,400,60);
      DefaultString = "Agility determines the number of Action Points available for use in\nV.A.T.S.";
+     fill(40,255,75);
      text(DefaultString, width/2+30, height/2+200);
    }   
    else if( (mouseX > 245 && mouseX < 645) && (mouseY > 590 && mouseY < 660) )
@@ -705,16 +699,15 @@ void Special()                                                                  
      DefaultPosH = height/2 - 230;
      DefaultSizeW = 400;
      DefaultSizeH = 400;
-     rect_i = width/2-438;
-     rect_j = height/2+220;
-     rect(rect_i, rect_j,400,60);
+     rect(width/2-438, height/2+220,400,60);
      DefaultString = "Luck raises the value of every skill and affects Critical Chance. It also\nimproves the odds of winning at any casino game; the higher the Luck,\nthe more likely favorable outcomes on bets will be.";
+     fill(40,255,75);
      text(DefaultString, width/2+30, height/2+200);
    }
    else
    {
      image(Default, DefaultPosW, DefaultPosH, DefaultSizeW, DefaultSizeH);
-     rect(rect_i, rect_j,400,60);
+     fill(40,255,75);
      text(DefaultString, width/2+30, height/2+200);
    }
    
@@ -798,12 +791,12 @@ void Perks()                                                                    
    text("Sneak", width/2-360, height/2+130);
    
    textFont(startup_font, 20);
-
+   fill(0, 150, 40, 80);
    if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 230 && mouseY < height/2 - 170) )
    {
-     noFill();
      rect(width/2-365, height/2-225, 290, 60);
      image(Locksmith, width/2+100, height/2-250, 300, 400);
+     fill(40,255,75);
      text("Your nimble fingers allow you to pick Advanced locks.", width-575, height-180);
      Default_P = Locksmith;
      PDefaultPosW = width/2+100;
@@ -814,9 +807,9 @@ void Perks()                                                                    
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 160 && mouseY < height/2 - 100) )
    {
-     noFill();
      rect(width/2-365, height/2-155, 290, 60);
      image(Rifleman, width/2+50, height/2-300, 400, 450);
+     fill(40,255,75);
      text("Keep your distance long and your kill-count high.\nAttacks with non-automatic rifles do 20% more damage.", width-575, height-180);
      Default_P = Rifleman;
      PDefaultPosW = width/2+50;
@@ -827,9 +820,9 @@ void Perks()                                                                    
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 90 && mouseY < height/2 - 30) )
    {   
-     noFill();
      rect(width/2-365, height/2-80, 290, 65);
      image(Party, width/2+200, height/2-200, 250, 350);
+     fill(40,255,75);
      text("Nobody has a good time like you! There's no chance\nyou'll get addicted to alcohol.", width-575, height-180);
      Default_P = Party;
      PDefaultPosW = width/2+200;
@@ -840,9 +833,9 @@ void Perks()                                                                    
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 - 20 && mouseY < height/2 + 60) )
    {   
-     noFill();
      rect(width/2-365, height/2+5, 290, 60);
      image(Medic, width/2+200, height/2-200, 250, 350);
+     fill(40,255,75);
      text("Stimpaks now restore 60% of lost Health, and RadAway\nremoves 60% of radiation.", width-575, height-180);
      Default_P = Medic;
      PDefaultPosW = width/2+200;
@@ -853,9 +846,9 @@ void Perks()                                                                    
    }
    else if( (mouseX > width/2-365 && mouseX < width/2+75) && (mouseY > height/2 + 50 && mouseY < height/2 + 130) )
    {   
-     noFill();
      rect(width/2-365, height/2+80, 290, 60);
      image(Sneak, width/2+200, height/2-200, 250, 350);
+     fill(40,255,75);
      text("Become whisper, become shadow. You are 20% harder\nto detect while sneaking.", width-575, height-180);
      Default_P = Sneak;
      PDefaultPosW = width/2+200;
@@ -867,6 +860,7 @@ void Perks()                                                                    
    else
    {
      image(Default_P, PDefaultPosW, PDefaultPosH, PDefaultSizeW, PDefaultSizeH);
+     fill(40,255,75);
      text(PDefaultString, width-575, height-180);
    }
 }
@@ -937,8 +931,7 @@ void Weapons()                                                                  
    text("CAPS  602", 375, height-20);
    text("AP 50/120", width-205, height-20);
    
-   noFill();
-   
+   fill(0, 150, 40, 80);  
    if( (mouseX > width/4-105 && mouseX < width/4+310) && (mouseY > height/2-200 && mouseY < height/2-140) )
    {
      rect(width/4-105, height/2-200, 415, 60);
@@ -1027,8 +1020,7 @@ void Apparel()                                                                  
    text("Cowboy Outfit", width/4-100, height/2+25);
    text("Scavenger Clothes", width/4-100, height/2+100);
    
-   noFill();
-   
+   fill(0, 150, 40, 80);
    if( (mouseX > width/4-100 && mouseX < width/4+230) && (mouseY > height/2-175 && mouseY < height/2-115) )
    {
      rect(width/4-100, height/2-175, 330, 60);
@@ -1123,12 +1115,13 @@ void Aid()                                                                      
    text("Potato Crisps", width/4-100, height/2+25);
    text("RadX", width/4-100, height/2+100);
    
-   noFill();
+   fill(0, 150, 40, 80);
    textFont(startup_font, 20);
    if( (mouseX > width/4-105 && mouseX < width/4+85) && (mouseY > height/2-175 && mouseY < height/2-115) )
    {
      rect(width/4-105, height/2-175, 190, 60);
      image(Stimpak, width/2+125, height/2-250, 300, 400);
+     fill(40,255,75);
      text("Heals 80 points of health", width/2+125, height/2+150);
      Aid_Default = Stimpak;
      Aid_S_Default = "Heals 80 points of health";
@@ -1137,6 +1130,7 @@ void Aid()                                                                      
    {
      rect(width/4-105, height/2-100, 170, 60);
      image(Buffout, width/2+125, height/2-250, 300, 400);
+     fill(40,255,75);
      text("Heals 50 points of health, and +3 to\nStrength temporarily", width/2+125, height/2+150);
      Aid_Default = Buffout;
      Aid_S_Default = "Heals 50 points of health, and +3 to\nStrength temporarily";
@@ -1145,6 +1139,7 @@ void Aid()                                                                      
    {
      rect(width/4-105, height/2-25, 310, 60);
      image(Crisps, width/2+125, height/2-250, 300, 400);
+     fill(40,255,75);
      text("Heals 20 points of health, and +7 Rads\nper second", width/2+125, height/2+150);
      Aid_Default = Crisps;
      Aid_S_Default = "Heals 20 points of health, and +7 Rads\nper second";
@@ -1153,6 +1148,7 @@ void Aid()                                                                      
    {
      rect(width/4-105, height/2+50, 135, 60);
      image(Radx, width/2+125, height/2-250, 300, 400);
+     fill(40,255,75);
      text("Gives +30% extra rad resistance\nfor 90 seconds", width/2+125, height/2+150);
      Aid_Default = Radx;
      Aid_S_Default = "Gives +30% extra rad resistance\nfor 90 seconds";
@@ -1160,6 +1156,7 @@ void Aid()                                                                      
    else
    {
      image(Aid_Default, width/2+125, height/2-250, 300, 400);
+     fill(40,255,75);
      text(Aid_S_Default, width/2+125, height/2+150);
    }
    
@@ -1230,7 +1227,7 @@ void Misc()
    text("Jar", width/4-100, height/2+100);
    text("Processor", width/4-100, height/2+175);
 
-   noFill();
+   fill(0, 150, 40, 80);
    if( (mouseX > width/4-105 && mouseX < width/4+15) && (mouseY > height/2-175 && mouseY < height/2-115) )
    {
      rect(width/4-105, height/2-175, 120, 60);
