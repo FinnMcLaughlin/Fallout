@@ -125,6 +125,7 @@ String QDefaultString = "Build the teleporter to gain access to the Institute\nB
 int QCounter = 0;
 boolean line = true;
 
+String Aid_S_Default = "Heals 80 points of health";
 int radio_counter = 0;
 SoundFile Classic;
 SoundFile Atom;
@@ -1130,6 +1131,7 @@ void Aid()                                                                      
      image(Stimpak, width/2+125, height/2-250, 300, 400);
      text("Heals 80 points of health", width/2+125, height/2+150);
      Aid_Default = Stimpak;
+     Aid_S_Default = "Heals 80 points of health";
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+65) && (mouseY > height/2-100 && mouseY < height/2-40) )
    {
@@ -1137,6 +1139,7 @@ void Aid()                                                                      
      image(Buffout, width/2+125, height/2-250, 300, 400);
      text("Heals 50 points of health, and +3 to\nStrength temporarily", width/2+125, height/2+150);
      Aid_Default = Buffout;
+     Aid_S_Default = "Heals 50 points of health, and +3 to\nStrength temporarily";
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+205) && (mouseY > height/2-50 && mouseY < height/2+10) )
    {
@@ -1144,6 +1147,7 @@ void Aid()                                                                      
      image(Crisps, width/2+125, height/2-250, 300, 400);
      text("Heals 20 points of health, and +7 Rads\nper second", width/2+125, height/2+150);
      Aid_Default = Crisps;
+     Aid_S_Default = "Heals 20 points of health, and +7 Rads\nper second";
    }
    else  if( (mouseX > width/4-105 && mouseX < width/4+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
    {
@@ -1151,10 +1155,12 @@ void Aid()                                                                      
      image(Radx, width/2+125, height/2-250, 300, 400);
      text("Gives +30% extra rad resistance\nfor 90 seconds", width/2+125, height/2+150);
      Aid_Default = Radx;
+     Aid_S_Default = "Gives +30% extra rad resistance\nfor 90 seconds";
    }
    else
    {
      image(Aid_Default, width/2+125, height/2-250, 300, 400);
+     text(Aid_S_Default, width/2+125, height/2+150);
    }
    
    //Info at the bottom of the screen
