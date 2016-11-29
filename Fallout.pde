@@ -66,6 +66,15 @@ void setup()
   
   Aid_Default = Stimpak;
   
+  //Setup Misc
+  Note = loadImage("Note.png");
+  Disk = loadImage("Holodisk.png");
+  Keycard = loadImage("Keycard.png");
+  Jar = loadImage("Jar.png");
+  Processor = loadImage("Processor.png");
+  
+  MDefault = Note;
+  
   //Setup Quests
   CurtainCall = loadImage("CurtainCall.png");
   FreedomRoad = loadImage("FreedomRoad.png");
@@ -90,6 +99,7 @@ PImage Machete, SMG, Shotgun, Minigun, Laser, Default_Weapon;
 PImage QDefault, FreedomRoad, CurtainCall, Institute, Devil;
 PImage ADefault, Raider, Suit, Scavenge, Cowboy;
 PImage Aid_Default, Stimpak, Buffout, Crisps, Radx;
+PImage MDefault, Note, Disk, Keycard, Jar, Processor;
 PImage Map;
 
 int DefaultPosW;
@@ -1011,34 +1021,34 @@ void Apparel()                                                                  
    
    textFont(startup_font, 50);
    fill(40,255,75);
-   text("Raider Armour", width/5-100, height/2-125);
-   text("Fancy Suit", width/5-100, height/2-50);
-   text("Cowboy Outfit", width/5-100, height/2+25);
-   text("Scavenger Clothes", width/5-100, height/2+100);
+   text("Raider Armour", width/4-100, height/2-125);
+   text("Fancy Suit", width/4-100, height/2-50);
+   text("Cowboy Outfit", width/4-100, height/2+25);
+   text("Scavenger Clothes", width/4-100, height/2+100);
    
    noFill();
    
-   if( (mouseX > width/5-100 && mouseX < width/5+230) && (mouseY > height/2-175 && mouseY < height/2-115) )
+   if( (mouseX > width/4-100 && mouseX < width/4+230) && (mouseY > height/2-175 && mouseY < height/2-115) )
    {
-     rect(width/5-100, height/2-175, 330, 60);
+     rect(width/4-100, height/2-175, 330, 60);
      image(Raider, width/2+125, height/2-250, 300, 500);
      ADefault = Raider;
    }
-   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2-100 && mouseY < height/2-40) )
+   else  if( (mouseX > width/4-100 && mouseX < width/4+145) && (mouseY > height/2-100 && mouseY < height/2-40) )
    {
-     rect(width/5-100, height/2-100, 245, 60);
+     rect(width/4-100, height/2-100, 245, 60);
      image(Suit, width/2+125, height/2-250, 300, 500);
      ADefault = Suit;
    }
-   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2-50 && mouseY < height/2+10) )
+   else  if( (mouseX > width/4-100 && mouseX < width/4+145) && (mouseY > height/2-50 && mouseY < height/2+10) )
    {
-     rect(width/5-100, height/2-25, 325, 60);
+     rect(width/4-100, height/2-25, 325, 60);
      image(Cowboy, width/2+125, height/2-250, 300, 500);
      ADefault = Cowboy;
    }
-   else  if( (mouseX > width/5-100 && mouseX < width/5+145) && (mouseY > height/2+25 && mouseY < height/2+95) )
+   else  if( (mouseX > width/4-100 && mouseX < width/4+145) && (mouseY > height/2+25 && mouseY < height/2+95) )
    {
-     rect(width/5-100, height/2+50, 425, 60);
+     rect(width/4-100, height/2+50, 425, 60);
      image(Scavenge, width/2+125, height/2-250, 300, 500);
      ADefault = Scavenge;
    }
@@ -1107,33 +1117,33 @@ void Aid()                                                                      
    
    textFont(startup_font, 50);
    fill(40,255,75);
-   text("Stimpak", width/5-100, height/2-125);
-   text("Buffout", width/5-100, height/2-50);
-   text("Potato Crisps", width/5-100, height/2+25);
-   text("RadX", width/5-100, height/2+100);
+   text("Stimpak", width/4-100, height/2-125);
+   text("Buffout", width/4-100, height/2-50);
+   text("Potato Crisps", width/4-100, height/2+25);
+   text("RadX", width/4-100, height/2+100);
    
    noFill();
-   if( (mouseX > width/5-105 && mouseX < width/5+85) && (mouseY > height/2-175 && mouseY < height/2-115) )
+   if( (mouseX > width/4-105 && mouseX < width/4+85) && (mouseY > height/2-175 && mouseY < height/2-115) )
    {
-     rect(width/5-105, height/2-175, 190, 60);
+     rect(width/4-105, height/2-175, 190, 60);
      image(Stimpak, width/2+125, height/2-250, 300, 500);
      Aid_Default = Stimpak;
    }
-   else  if( (mouseX > width/5-105 && mouseX < width/5+65) && (mouseY > height/2-100 && mouseY < height/2-40) )
+   else  if( (mouseX > width/4-105 && mouseX < width/4+65) && (mouseY > height/2-100 && mouseY < height/2-40) )
    {
-     rect(width/5-105, height/2-100, 170, 60);
+     rect(width/4-105, height/2-100, 170, 60);
      image(Buffout, width/2+125, height/2-250, 300, 500);
      Aid_Default = Buffout;
    }
-   else  if( (mouseX > width/5-105 && mouseX < width/5+205) && (mouseY > height/2-50 && mouseY < height/2+10) )
+   else  if( (mouseX > width/4-105 && mouseX < width/4+205) && (mouseY > height/2-50 && mouseY < height/2+10) )
    {
-     rect(width/5-105, height/2-25, 310, 60);
+     rect(width/4-105, height/2-25, 310, 60);
      image(Crisps, width/2+125, height/2-250, 300, 500);
      Aid_Default = Crisps;
    }
-   else  if( (mouseX > width/5-105 && mouseX < width/5+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
+   else  if( (mouseX > width/4-105 && mouseX < width/4+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
    {
-     rect(width/5-105, height/2+50, 135, 60);
+     rect(width/4-105, height/2+50, 135, 60);
      image(Radx, width/2+125, height/2-250, 300, 500);
      Aid_Default = Radx;
    }
@@ -1199,6 +1209,50 @@ void Misc()
    if( (mouseX > 815 && mouseX < 950) && (mouseY > 50 && mouseY < 150) )
    {
      rect(815, 70, 140, 55);
+   }
+   
+   textFont(startup_font, 50);
+   fill(40,255,75);
+   text("Note", width/4-100, height/2-125);
+   text("Holodisk", width/4-100, height/2-50);
+   text("Keycard", width/4-100, height/2+25);
+   text("Jar", width/4-100, height/2+100);
+   text("Processor", width/4-100, height/2+175);
+
+   noFill();
+   if( (mouseX > width/4-105 && mouseX < width/4+85) && (mouseY > height/2-175 && mouseY < height/2-115) )
+   {
+     rect(width/4-105, height/2-175, 190, 60);
+     image(Note, width/2, height/2-150, 300, 300);
+     MDefault = Note;
+   }
+   else  if( (mouseX > width/4-105 && mouseX < width/4+65) && (mouseY > height/2-100 && mouseY < height/2-40) )
+   {
+     rect(width/4-105, height/2-100, 170, 60);
+     image(Disk, width/2, height/2-150, 300, 300);
+     MDefault = Disk;
+   }
+   else  if( (mouseX > width/4-105 && mouseX < width/4+205) && (mouseY > height/2-50 && mouseY < height/2+10) )
+   {
+     rect(width/4-105, height/2-25, 310, 60);
+     image(Keycard, width/2, height/2-150, 300, 300);
+     MDefault = Keycard;
+   }
+   else  if( (mouseX > width/4-105 && mouseX < width/4+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
+   {
+     rect(width/4-105, height/2+50, 135, 60);
+     image(Jar, width/2, height/2-150, 300, 300);
+     MDefault = Jar;
+   }
+   else  if( (mouseX > width/4-105 && mouseX < width/4+30) && (mouseY > height/2+25 && mouseY < height/2+95) )
+   {
+     rect(width/4-105, height/2+50, 135, 60);
+     image(Processor, width/2, height/2-150, 300, 300);
+     MDefault = Processor;
+   }
+   else
+   {
+     image(MDefault, width/2, height/2-150, 300, 300);
    }
    
    //Info at the bottom of the screen
