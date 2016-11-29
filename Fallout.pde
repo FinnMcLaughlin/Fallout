@@ -134,7 +134,7 @@ SoundFile Static;
 Menu Menu;
 PFont startup_font;
 int counter = 0;
-int menu_counter = 0;
+int menu_counter = 8;
 int stimp_count = 1;
 int i = 0;
 
@@ -1430,8 +1430,16 @@ void Stats()
    {
      rect(670, 70, 160, 55);
    }
+   
+   rect(width/6, height/6+50, 900, 500);
+   
+   for(int i=0; i < 11; i++)
+   {
+      line(width/6, height/6+50 +(50*i), width/6+900, height/6+50 +(50*i));
+   }
+   
+   Statistics();
 }
-
 void Map()
 {
   Menu.Index();
